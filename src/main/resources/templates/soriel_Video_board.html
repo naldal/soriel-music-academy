@@ -1,0 +1,80 @@
+<html xmlns:th="http://www.thymleaf.org" lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>video board</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+        <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+        />
+        <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600&display=swap" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+        />
+        <link rel="stylesheet" href="../static/css/soriel_Video_board.css" />
+        <link rel="stylesheet" th:href="@{/static/css/soriel_Header.css}" />
+    </head>
+    <body>
+        <div class="container">
+            <th:block th:replace="fragment/soriel_Header :: headerFragment"></th:block>
+
+            <div class="text-center" style="font-family: 'Noto Serif KR', serif; margin-top: 100px;">
+                <p class="h4">Soriel 의 비디오 게시판 입니다.</p>
+                <p class="h2">ㅡ</p>
+            </div>
+            <!-- Main Text - Philosophy -->
+
+            <div class="row">
+                <div class="col-3 justify-content-center">
+                    <div class="card text-center">
+                        <div class="card-body" >
+                            <p class="card-text">김영민</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">오지환</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">설지환</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">김민수</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">연정희</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">구만설</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">송주희</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">구단설</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sEakwOd2n-Q" allowfullscreen></iframe>
+                        <!-- I faced the same error when displaying YouTube links. 
+                            For example: https://www.youtube.com/watch?v=8WkuChVeL0s
+                            
+                            I replaced watch?v= with embed/ 
+                            so the valid link will be: https://www.youtube.com/embed/8WkuChVeL0s 
+                        
+                            todo : watch?v= 를 embed/ 로.. 백단에서 바꿔줄 것.
+                        -->
+                    </div>
+                </div>
+        </div>
+        <!-- container -->
+    </body>
+</html>

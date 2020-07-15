@@ -1,0 +1,118 @@
+<html xmlns:th="http://www.thymleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Inquire board</title>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+        />
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+        <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600&display=swap" rel="stylesheet" />
+
+        <link rel="stylesheet" th:href="@{/static/css/soriel_Inquire_board.css}" />
+        <link rel="stylesheet" th:href="@{/static/css/soriel_Header.css}" />
+    </head>
+    <body>
+        <div class="container">
+            <th:block th:replace="fragment/soriel_Header :: headerFragment"></th:block>
+
+            <div id="inq" class="text-center">
+                <p class="h4">문의게시판</p>
+                <p class="h2">ㅡ</p>
+            </div>
+            <!-- Inquire Text 1 -->
+
+            <ul class="nav nav-pills justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" href="../inquire_form">글쓰기</a>
+                </li>
+            </ul>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th id="title" scope="col">제목</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">카테고리</th>
+                    <th scope="col">날짜</th>
+                    <th scope="col">답변여부</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td id="title_rl"><a href="/inquire_view">문의드립니다</a></td>
+                    <td>Otto</td>
+                    <td>입학상담</td>
+                    <td>2020-07-06</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td id="title_rl"><a href="#">위치가 어디인가요</a></td>
+                    <td>Thornton</td>
+                    <td>기타</td>
+                    <td>2020-07-06</td>
+                    <td>답변완료</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td id="title_rl"><a href="#">차량시간 문의드립니다</a></td>
+                    <td>the Bird</td>
+                    <td>차량운행</td>
+                    <td>2020-07-06</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td id="title_rl"><a href="#">아이가 조금 늦습니다</a></td>
+                    <td>Megi</td>
+                    <td>기타</td>
+                    <td>2020-07-06</td>
+                    <td>답변완료</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td id="title_rl"><a href="#">내일 일정이 궁금합니다</a></td>
+                    <td>HyeonSuk</td>
+                    <td>기타</td>
+                    <td>2020-07-06</td>
+                    <td>답변완료</td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td id="title_rl"><a href="#">예약 가능할까요</a></td>
+                    <td>Jinho</td>
+                    <td>입학상담</td>
+                    <td>2020-07-06</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td id="title_rl"><a href="#">학원전화번호가 궁금합니다</a></td>
+                    <td>Guman</td>
+                    <td>입학상담</td>
+                    <td>2020-07-06</td>
+                    <td>-</td>
+                </tr>
+                </tbody>
+            </table>
+            <nav id="pag" aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+    </body>
+</html>

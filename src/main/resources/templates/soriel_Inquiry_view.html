@@ -1,0 +1,67 @@
+<html xmlns:th="http://www.thymleaf.org" lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Inquiry View</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+        <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+        />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600&display=swap" rel="stylesheet" />
+
+        <link rel="stylesheet" th:href="@{/static/css/soriel_Header.css}" />
+    </head>
+    <body>
+        <div class="container">
+            <th:block th:replace="fragment/soriel_Header :: headerFragment"></th:block>
+
+            <div class="title" style="border-bottom: 1px solid #dddddd; margin-top: 100px;">
+                <h4>차량운행이 궁금합니다</h4>
+            </div>
+
+            <div class="content shadow-sm p-3 mb-5 bg-white rounded" style="font-size: 24px; margin-top: 30px; margin-bottom: 20px !important;">
+                <p class="text-break">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A veniam omnis qui dolore iure quisquam excepturi sed perspiciatis, nisi similique obcaecati necessitatibus nulla deserunt
+                    vitae? Non error sunt fugit dolorum. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod eos, quibusdam iure quisquam facere praesentium? Delectus nemo aut debitis quis.
+                    Mollitia dignissimos magni inventore aut asperiores obcaecati excepturi, perferendis ea. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi incidunt quasi adipisci
+                    placeat, ratione deleniti numquam maiores doloribus repudiandae ipsa iste voluptas suscipit praesentium labore fugit dolorum porro qui! Ducimus.
+                </p>
+            </div>
+
+            <div class="text-right">
+                <input id="deleteBtn" class="btn btn-outline-secondary" type="button" value="삭제" />
+                <input id="replyBtn" class="btn btn-outline-secondary" type="button" value="답글" />
+            </div>
+
+            <form action="">
+                <div class="form-group" id="reply" style="font-size: 24px; border-bottom: 1px solid #dddddd; margin-top: 60px;">
+                    <label for="exampleFormControlTextarea1">답글</label>
+                    <textarea class="form-control" rows="10"></textarea>
+                </div>
+            </form>
+
+            <div class="text-right spc" style="margin-bottom: 100px;">
+                <input class="btn btn-outline-secondary" type="submit" value="Submit" />
+                <input class="btn btn-outline-secondary" type="reset" value="Reset" />
+            </div>
+        </div>
+    </body>
+    <script>
+        $(document).ready(function () {
+            $("#reply").hide();
+            $(".spc").hide();
+            $("#replyBtn").click(function () {
+                $("#deleteBtn").hide();
+                $("#replyBtn").hide();
+                $("#reply").show();
+                $(".spc").show();
+            });
+        });
+    </script>
+</html>

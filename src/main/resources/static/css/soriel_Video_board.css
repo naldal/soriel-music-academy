@@ -1,0 +1,23 @@
+.container .row {
+    margin-top: 50px;
+}
+
+.col-3 {
+    height: 420px;
+    overflow: auto;
+}
+
+.container .row div {
+    margin-bottom: 20px;
+}
+
+.card {
+    border: none !important;
+}
+.card-body {
+    border: 1px solid #dddddd;
+}
+
+.card-body p {
+    font-family: "Gugi", cursive;
+}

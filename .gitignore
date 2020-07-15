@@ -1,0 +1,10 @@
+# Project exclude paths
+/.gradle/
+.idea
+application.properties
+application-oauth.yml
+# Project exclude paths
+/build/
+/out/
+/out/production/classes/
+/out/test/classes/

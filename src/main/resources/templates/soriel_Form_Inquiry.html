@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.thymleaf.org" lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>reservation page</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+        <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+        />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600&display=swap" rel="stylesheet" />
+
+        <link rel="stylesheet" th:href="@{/static/css/soriel_Header.css}" />
+    </head>
+
+
+    <body>
+        <div class="container">
+            <th:block th:replace="fragment/soriel_Header :: headerFragment"></th:block>
+            <div class="text-center" style="font-family: 'Noto Serif KR', serif; margin-top: 100px;">
+                <p class="h4">궁금하거나 도움이 필요한 것이 있으신가요?</p>
+                <p class="h2">ㅡ</p>
+            </div>
+    
+            <form>
+                <div class="form-group">
+                    <label>문의 제목</label>
+                    <input type="email" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label>카테고리</label>
+                    <select class="form-control">
+                        <option>입학상담</option>
+                        <option>교재구입/대여</option>
+                        <option>차량운행</option>
+                        <option>기타</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>문의내용</label>
+                    <textarea class="form-control"rows="10"></textarea>
+                </div>
+            </form>
+
+            <div class="text-right" style="margin-bottom: 100px;">
+                <input class="btn btn-outline-secondary" type="submit" value="Submit">
+                <input class="btn btn-outline-secondary" type="reset" value="Reset">
+            </div>
+        </div>
+    </body>
+</html>

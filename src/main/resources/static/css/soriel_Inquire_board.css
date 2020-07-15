@@ -1,0 +1,25 @@
+#inq {
+    font-family: "Noto Serif KR", serif;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+.table {
+    border-bottom: 1px solid #dddddd;
+}
+#pag {
+    margin-bottom: 100px;
+}
+#title,
+tr th,
+tr td,
+#title_rl {
+    text-align: center;
+}
+
+.nav-pills {
+    margin-bottom: 5px;
+}
+
+a.nav-link.active {
+    background-color: #6c5ce7 !important;
+}
