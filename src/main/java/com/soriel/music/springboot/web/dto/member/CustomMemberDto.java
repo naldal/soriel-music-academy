@@ -1,4 +1,4 @@
-package com.soriel.music.springboot.web.dto.soriels;
+package com.soriel.music.springboot.web.dto.member;
 
 import com.soriel.music.springboot.domain.soriel.MemberEntity;
 import lombok.Getter;

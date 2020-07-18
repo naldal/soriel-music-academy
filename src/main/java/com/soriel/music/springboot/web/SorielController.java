@@ -24,22 +24,4 @@ public class SorielController {
         return "soriel_Video_board";
     }
 
-    //문의 게시판
-    @GetMapping("/inquire_board")
-    public String inquire_board() {
-        return "soriel_Inquire_board";
-    }
-
-    //문의 양식 페이지
-    @GetMapping("/inquire_form")
-    public String inquire_form() {
-        return "soriel_Form_Inquiry";
-    }
-
-    //문의 게시물 보기
-    @GetMapping("/inquire_view")
-    public String inquire_view() {
-        return "soriel_Inquiry_view";
-    }
-
 }

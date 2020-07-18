@@ -1,7 +1,7 @@
 package com.soriel.music.springboot.service.soriel;
 
 import com.soriel.music.springboot.domain.soriel.*;
-import com.soriel.music.springboot.web.dto.soriels.*;
+import com.soriel.music.springboot.web.dto.member.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

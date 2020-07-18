@@ -1,8 +1,7 @@
-package com.soriel.music.springboot.web.dto.soriels;
+package com.soriel.music.springboot.web.dto.member;
 
 import com.soriel.music.springboot.domain.Role;
 import com.soriel.music.springboot.domain.soriel.IntegrationEntity;
-import com.soriel.music.springboot.domain.soriel.KakaoEntity;
 import lombok.Builder;
 import lombok.Getter;
 

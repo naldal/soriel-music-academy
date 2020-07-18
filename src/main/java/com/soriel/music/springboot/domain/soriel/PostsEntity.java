@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
@@ -31,10 +33,13 @@ public class PostsEntity extends BaseTimeEntity {
     private String verify_reply;
 
     @Builder
-    public PostsEntity(String title, String content, String category) {
+    public PostsEntity(Long id, String title, String writer, String content, String category, String verify_reply, LocalDateTime createdDate) {
+        this.id = id;
         this.title = title;
+        this.writer = writer;
         this.content = content;
         this.category = category;
+        this.verify_reply = verify_reply;
     }
 
     public void reply_update(String verify_reply) {

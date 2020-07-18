@@ -1,8 +1,6 @@
-package com.soriel.music.springboot.web.dto.soriels;
+package com.soriel.music.springboot.web.dto.member;
 
 import com.soriel.music.springboot.domain.soriel.KakaoEntity;
-import com.soriel.music.springboot.domain.soriel.MemberEntity;
-import com.soriel.music.springboot.service.soriel.CustomOAuth2UserService;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;

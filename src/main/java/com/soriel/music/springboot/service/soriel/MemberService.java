@@ -2,8 +2,8 @@ package com.soriel.music.springboot.service.soriel;
 
 import com.soriel.music.springboot.domain.soriel.IntegrationEntity;
 import com.soriel.music.springboot.domain.soriel.IntegrationRepository;
-import com.soriel.music.springboot.web.dto.soriels.CustomIntegrationDto;
-import com.soriel.music.springboot.web.dto.soriels.IntegrationDto;
+import com.soriel.music.springboot.web.dto.member.CustomIntegrationDto;
+import com.soriel.music.springboot.web.dto.member.IntegrationDto;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

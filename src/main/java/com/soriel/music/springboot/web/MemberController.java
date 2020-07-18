@@ -1,8 +1,7 @@
 package com.soriel.music.springboot.web;
 
 import com.soriel.music.springboot.service.soriel.MemberService;
-import com.soriel.music.springboot.web.dto.soriels.IntegrationDto;
-import com.soriel.music.springboot.web.dto.soriels.MemberDto;
+import com.soriel.music.springboot.web.dto.member.IntegrationDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
