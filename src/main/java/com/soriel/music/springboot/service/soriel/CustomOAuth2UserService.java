@@ -1,25 +1,17 @@
 package com.soriel.music.springboot.service.soriel;
 
-import com.soriel.music.springboot.domain.soriel.KakaoEntity;
-import com.soriel.music.springboot.domain.soriel.KakaoRepository;
-import com.soriel.music.springboot.domain.soriel.MemberEntity;
-import com.soriel.music.springboot.domain.soriel.MemberRepository;
-import com.soriel.music.springboot.web.dto.soriels.CustomDefaultOAuth2User;
-import com.soriel.music.springboot.web.dto.soriels.KakaoDto;
-import com.soriel.music.springboot.web.dto.soriels.OAuthAttributes;
-import com.soriel.music.springboot.web.dto.soriels.SessionUser;
+import com.soriel.music.springboot.domain.soriel.*;
+import com.soriel.music.springboot.web.dto.soriels.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
-import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-import java.lang.reflect.Member;
 import java.util.Collections;
 
 @RequiredArgsConstructor
@@ -27,6 +19,7 @@ import java.util.Collections;
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
     private final KakaoRepository kakaoRepository;
+    private final IntegrationRepository integrationRepository;
     private final HttpSession httpSession;
 
     @Override
@@ -42,26 +35,20 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
-        KakaoEntity kakaoEntity = saveOrUpdate(attributes);
+        IntegrationEntity kakaointegrationEntity = saveOrUpdate(attributes);
 
-        System.out.println("tostring : "+kakaoEntity.toString());
-        System.out.println("getname : "+kakaoEntity.getName());
-
-
-        //System.out.println("111 : "+attributes.getName());
-
-        return new CustomDefaultOAuth2User(kakaoEntity
-                                            ,Collections.singleton(new SimpleGrantedAuthority(kakaoEntity.getRoleKey()))
+        return new CustomIntegrationDto(kakaointegrationEntity
+                                            ,Collections.singleton(new SimpleGrantedAuthority(kakaointegrationEntity.getRoleKey()))
                                             ,attributes.getAttributes()
                                             ,attributes.getNameAttributeKey()
                                             );
     }
 
-    private KakaoEntity saveOrUpdate(OAuthAttributes attributes) {
-        KakaoEntity kakaoEntity = kakaoRepository.findByName(attributes.getName())
+    private IntegrationEntity saveOrUpdate(OAuthAttributes attributes) {
+        IntegrationEntity kakaoEntity = integrationRepository.findByName(attributes.getName())
                 .map(entity->entity.update(attributes.getName(), attributes.getEmail()))
                 .orElse(attributes.toEntity());
 
-        return kakaoRepository.save(kakaoEntity);
+        return integrationRepository.save(kakaoEntity);
     }
 }

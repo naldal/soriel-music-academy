@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymleaf.org" lang="ko">
+<html xmlns:th="http://www.thymleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ko">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,12 +36,13 @@
 
             <div class="text-right">
                 <input id="deleteBtn" class="btn btn-outline-secondary" type="button" value="삭제" />
-                <input id="replyBtn" class="btn btn-outline-secondary" type="button" value="답글" />
+                <input id="updateBtn" class="btn btn-outline-secondary" type="button" value="수정" />
+                <input  sec:authorize="hasRole('ROLE_ADMIN')" id="replyBtn" class="btn btn-outline-secondary" type="button" value="답글" />
             </div>
 
             <form action="">
                 <div class="form-group" id="reply" style="font-size: 24px; border-bottom: 1px solid #dddddd; margin-top: 60px;">
-                    <label for="exampleFormControlTextarea1">답글</label>
+                    <label>답글</label>
                     <textarea class="form-control" rows="10"></textarea>
                 </div>
             </form>

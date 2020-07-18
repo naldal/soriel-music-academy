@@ -30,26 +30,26 @@
             <form>
                 <div class="form-group">
                     <label>문의 제목</label>
-                    <input type="email" class="form-control"/>
+                    <input type="title" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label>카테고리</label>
-                    <select class="form-control">
-                        <option>입학상담</option>
-                        <option>교재구입/대여</option>
-                        <option>차량운행</option>
-                        <option>기타</option>
+                    <select id="a" name="category" class="form-control">
+                        <option value="입학상담">입학상담</option>
+                        <option value="교재구입/대여">교재구입/대여</option>
+                        <option value="차량운행">차량운행</option>
+                        <option value="기타">기타</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
                     <label>문의내용</label>
-                    <textarea class="form-control"rows="10"></textarea>
+                    <textarea name="content" class="form-control"rows="10"></textarea>
                 </div>
             </form>
 
             <div class="text-right" style="margin-bottom: 100px;">
-                <input class="btn btn-outline-secondary" type="submit" value="Submit">
+                <input id="sb" class="btn btn-outline-secondary" type="submit" value="Submit">
                 <input class="btn btn-outline-secondary" type="reset" value="Reset">
             </div>
         </div>

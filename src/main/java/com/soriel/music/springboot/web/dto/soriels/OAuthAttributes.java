@@ -1,6 +1,7 @@
 package com.soriel.music.springboot.web.dto.soriels;
 
 import com.soriel.music.springboot.domain.Role;
+import com.soriel.music.springboot.domain.soriel.IntegrationEntity;
 import com.soriel.music.springboot.domain.soriel.KakaoEntity;
 import lombok.Builder;
 import lombok.Getter;
@@ -45,8 +46,8 @@ public class OAuthAttributes {
                                         .build();
     }
 
-    public KakaoEntity toEntity() {
-        return KakaoEntity.builder()
+    public IntegrationEntity toEntity() {
+        return IntegrationEntity.builder()
                 .name(name)
                 .email(email)
                 .role(Role.MEMBER)

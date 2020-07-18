@@ -1,9 +1,9 @@
 package com.soriel.music.springboot.service.soriel;
 
-import com.soriel.music.springboot.domain.soriel.MemberEntity;
-import com.soriel.music.springboot.domain.soriel.MemberRepository;
-import com.soriel.music.springboot.web.dto.soriels.CustomMemberDto;
-import com.soriel.music.springboot.web.dto.soriels.MemberDto;
+import com.soriel.music.springboot.domain.soriel.IntegrationEntity;
+import com.soriel.music.springboot.domain.soriel.IntegrationRepository;
+import com.soriel.music.springboot.web.dto.soriels.CustomIntegrationDto;
+import com.soriel.music.springboot.web.dto.soriels.IntegrationDto;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,29 +22,29 @@ import java.util.Optional;
 @AllArgsConstructor
 public class MemberService implements UserDetailsService {
 
-    private MemberRepository memberRepository;
+    private IntegrationRepository integrationRepository;
 
     @Transactional
-    public Long joinUser(MemberDto memberDto) {
+    public IntegrationEntity joinUser(IntegrationDto integrationDto) {
         // 비밀번호 암호화
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        memberDto.setUpwd(passwordEncoder.encode(memberDto.getUpwd()));
+        integrationDto.setUpwd(passwordEncoder.encode(integrationDto.getUpwd()));
 
 
-        return memberRepository.save(memberDto.toEntity()).getId();
+        return integrationRepository.save(integrationDto.toEntity());
     }
 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<MemberEntity> memberEntityOptional = memberRepository.findByName(username);
-        MemberEntity memberEntity = memberEntityOptional.get();
+        Optional<IntegrationEntity> integrationEntityOptional = integrationRepository.findByName(username);
+        IntegrationEntity integrationEntity = integrationEntityOptional.get();
 
-        if (memberEntity == null) throw new UsernameNotFoundException(username);
+        if (integrationEntity == null) throw new UsernameNotFoundException(username);
 
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(memberEntity.getRoleKey()));
+        authorities.add(new SimpleGrantedAuthority(integrationEntity.getRoleKey()));
 
-        return new CustomMemberDto(memberEntity, memberEntity.getName(), memberEntity.getUpwd(), authorities);
+        return new CustomIntegrationDto(integrationEntity, integrationEntity.getName(), integrationEntity.getUpwd(), authorities);
     }
 }
