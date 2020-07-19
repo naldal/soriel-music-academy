@@ -4,6 +4,8 @@ import com.soriel.music.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -11,7 +13,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
-@Entity
+@Entity(name="posts")
 public class PostsEntity extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,17 +31,23 @@ public class PostsEntity extends BaseTimeEntity {
     @Column
     private String writer;
 
-    @Column(nullable = true)
+    @Column
     private String verify_reply;
 
+    @OneToOne
+    @JoinColumn(name = "member_id")
+    private IntegrationEntity integrationEntity;
+
     @Builder
-    public PostsEntity(Long id, String title, String writer, String content, String category, String verify_reply, LocalDateTime createdDate) {
+    public PostsEntity(Long id, String title, String writer, String content, String category, String verify_reply, IntegrationEntity integrationEntity) {
         this.id = id;
         this.title = title;
         this.writer = writer;
         this.content = content;
         this.category = category;
         this.verify_reply = verify_reply;
+        this.integrationEntity = integrationEntity;
+
     }
 
     public void reply_update(String verify_reply) {

@@ -3,6 +3,7 @@ package com.soriel.music.springboot.web;
 import com.soriel.music.springboot.domain.soriel.PostsEntity;
 import com.soriel.music.springboot.service.soriel.PostsService;
 import com.soriel.music.springboot.web.dto.posts.PostsDto;
+import com.soriel.music.springboot.web.dto.posts.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,7 +24,7 @@ public class PostsApiController {
     @PostMapping("/post")
     public String write(PostsDto postsDto) {
         authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(">>>>>>>>>>>>>>>>>>>"+authentication.getName());
+
         postsDto.setWriter(authentication.getName());
         postsService.savePosts(postsDto);
 
@@ -53,5 +54,22 @@ public class PostsApiController {
         model.addAttribute("postDto", postsDto);
 
         return "soriel_Inquiry_view";
+    }
+
+    //게시글 수정 페이지로 이동
+    @GetMapping("/post/update/{id}")
+    public String dis_update(@PathVariable("id)") Long id, Model model){
+        PostsDto postsDto = postsService.getPost(id);
+
+        model.addAttribute("postDto", postsDto);
+        System.out.println(">>>>>>>>>>>>>>>>>"+postsDto.toString());
+        return "soriel_Inquiry_update";
+    }
+
+    //게시글 수정 기능
+    @PutMapping("/post/update/{id}")
+    public String update(@PathVariable("id") Long id, PostsUpdateRequestDto requestDto) {
+        postsService.update(id, requestDto);
+        return "redirect:/";
     }
 }

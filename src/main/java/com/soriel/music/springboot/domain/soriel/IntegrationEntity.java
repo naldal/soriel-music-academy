@@ -1,5 +1,6 @@
 package com.soriel.music.springboot.domain.soriel;
 
+import com.soriel.music.springboot.domain.BaseTimeEntity;
 import com.soriel.music.springboot.domain.Role;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -9,9 +10,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Getter
-@Entity
+@Entity(name = "member")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class IntegrationEntity {
+public class IntegrationEntity extends BaseTimeEntity {
     //가제
 
     @Id
@@ -31,7 +32,7 @@ public class IntegrationEntity {
     private String youtubeLink;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = true)
+    @Column
     private Role role;
 
     @Builder

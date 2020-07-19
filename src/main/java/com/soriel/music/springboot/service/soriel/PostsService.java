@@ -3,6 +3,7 @@ package com.soriel.music.springboot.service.soriel;
 import com.soriel.music.springboot.domain.soriel.PostsEntity;
 import com.soriel.music.springboot.domain.soriel.PostsRepository;
 import com.soriel.music.springboot.web.dto.posts.PostsDto;
+import com.soriel.music.springboot.web.dto.posts.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,7 @@ public class PostsService {
                     .writer(postsEntity.getWriter())
                     .content(postsEntity.getContent())
                     .createdDate(postsEntity.getCreatedDate())
+                    .modifiedDate(postsEntity.getModifiedDate())
                     .build();
 
             postsDtoList.add(postsDto);
@@ -55,8 +57,18 @@ public class PostsService {
                 .content(postsEntity.getContent())
                 .category(postsEntity.getCategory())
                 .createdDate(postsEntity.getCreatedDate())
+                .modifiedDate(postsEntity.getModifiedDate())
                 .build();
 
         return postsDto;
+    }
+
+    @Transactional
+    public Long update(Long id, PostsUpdateRequestDto requestDto) {
+        Optional<PostsEntity> postsEntityOptional = postsRepository.findById(id);
+        PostsEntity postsEntity = postsEntityOptional.get();
+
+        postsEntity.update(requestDto.getTitle(), requestDto.getContent());
+        return id;
     }
 }
