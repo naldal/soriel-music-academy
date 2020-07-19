@@ -11,11 +11,13 @@ public class PostsUpdateRequestDto {
     private Long id;
     private String title;
     private String content;
+    private Long writer_id;
 
     @Builder
-    public PostsUpdateRequestDto(Long id, String title, String content) {
+    public PostsUpdateRequestDto(Long id, String title, String content, Long writer_id) {
         this.id = id;
         this.title = title;
         this.content = content;
+        this.writer_id = writer_id;
     }
 }

@@ -51,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .csrf()
                     .ignoringAntMatchers("/h2-console/**")
+                    .ignoringAntMatchers("/post/**")
                 .and() //로그아웃 설정
                     .logout()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
@@ -62,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .oauth2Login()
                         .userInfoEndpoint()
                             .userService(customAutowireConfigurer);
-
+        //http.csrf().disable();
         http.headers().frameOptions().disable();
     }
 

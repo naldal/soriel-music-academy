@@ -1,5 +1,6 @@
 package com.soriel.music.springboot.service.soriel;
 
+import com.soriel.music.springboot.domain.soriel.IntegrationEntity;
 import com.soriel.music.springboot.domain.soriel.PostsEntity;
 import com.soriel.music.springboot.domain.soriel.PostsRepository;
 import com.soriel.music.springboot.web.dto.posts.PostsDto;
@@ -22,6 +23,8 @@ public class PostsService {
     public Long savePosts(PostsDto postsDto) {
         return postsRepository.save(postsDto.toEntity()).getId();
     }
+
+
 
     @Transactional
     public List<PostsDto> getPostList() {
@@ -51,14 +54,15 @@ public class PostsService {
         PostsEntity postsEntity = postsEntityOptional.get();
 
         PostsDto postsDto = PostsDto.builder()
-                .id(postsEntity.getId())
-                .title(postsEntity.getTitle())
-                .writer(postsEntity.getWriter())
-                .content(postsEntity.getContent())
-                .category(postsEntity.getCategory())
-                .createdDate(postsEntity.getCreatedDate())
-                .modifiedDate(postsEntity.getModifiedDate())
-                .build();
+                            .id(postsEntity.getId())
+                            .title(postsEntity.getTitle())
+                            .writer(postsEntity.getWriter())
+                            .content(postsEntity.getContent())
+                            .category(postsEntity.getCategory())
+                            .writer_id(postsEntity.getWriter_id())
+                            .createdDate(postsEntity.getCreatedDate())
+                            .modifiedDate(postsEntity.getModifiedDate())
+                            .build();
 
         return postsDto;
     }

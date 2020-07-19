@@ -18,7 +18,7 @@ public class PostsDto {
     private String content;
     private String writer;
     private String verify_reply;
-    private IntegrationEntity integrationEntity_id;
+    private Long writer_id;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 
@@ -28,19 +28,20 @@ public class PostsDto {
                 .writer(writer)
                 .content(content)
                 .category(category)
-                .integrationEntity(integrationEntity_id)
+                .writer_id(writer_id)
                 .verify_reply(verify_reply)
                 .build();
     }
 
     @Builder
     public PostsDto(Long id, String title, String category, String content, String writer,
-                    String verify_reply, LocalDateTime createdDate, LocalDateTime modifiedDate) {
+                    String verify_reply, Long writer_id, LocalDateTime createdDate, LocalDateTime modifiedDate) {
         this.id = id;
         this.title = title;
         this.category = category;
         this.content = content;
         this.writer = writer;
+        this.writer_id = writer_id;
         this.verify_reply = verify_reply;
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;

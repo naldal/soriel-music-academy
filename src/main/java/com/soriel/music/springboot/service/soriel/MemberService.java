@@ -34,7 +34,6 @@ public class MemberService implements UserDetailsService {
         return integrationRepository.save(integrationDto.toEntity());
     }
 
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<IntegrationEntity> integrationEntityOptional = integrationRepository.findByName(username);
@@ -46,5 +45,14 @@ public class MemberService implements UserDetailsService {
         authorities.add(new SimpleGrantedAuthority(integrationEntity.getRoleKey()));
 
         return new CustomIntegrationDto(integrationEntity, integrationEntity.getName(), integrationEntity.getUpwd(), authorities);
+    }
+
+    @Transactional
+    public Long getMemberInfo(String username) {
+        Optional<IntegrationEntity> integrationEntityOptional =  integrationRepository.findByName(username);
+        IntegrationEntity integrationEntity = integrationEntityOptional.get();
+
+        System.out.println(integrationEntity.getId());
+        return integrationEntity.getId();
     }
 }

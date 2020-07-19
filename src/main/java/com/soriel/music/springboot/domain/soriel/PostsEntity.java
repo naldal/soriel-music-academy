@@ -34,19 +34,18 @@ public class PostsEntity extends BaseTimeEntity {
     @Column
     private String verify_reply;
 
-    @OneToOne
-    @JoinColumn(name = "member_id")
-    private IntegrationEntity integrationEntity;
+    @Column
+    private Long writer_id;
 
     @Builder
-    public PostsEntity(Long id, String title, String writer, String content, String category, String verify_reply, IntegrationEntity integrationEntity) {
+    public PostsEntity(Long id, String title, String writer, String content, String category, String verify_reply, Long writer_id) {
         this.id = id;
         this.title = title;
         this.writer = writer;
         this.content = content;
         this.category = category;
         this.verify_reply = verify_reply;
-        this.integrationEntity = integrationEntity;
+        this.writer_id = writer_id;
 
     }
 

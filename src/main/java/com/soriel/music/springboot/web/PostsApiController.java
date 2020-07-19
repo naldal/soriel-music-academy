@@ -1,6 +1,7 @@
 package com.soriel.music.springboot.web;
 
 import com.soriel.music.springboot.domain.soriel.PostsEntity;
+import com.soriel.music.springboot.service.soriel.MemberService;
 import com.soriel.music.springboot.service.soriel.PostsService;
 import com.soriel.music.springboot.web.dto.posts.PostsDto;
 import com.soriel.music.springboot.web.dto.posts.PostsUpdateRequestDto;
@@ -18,6 +19,7 @@ import java.util.List;
 public class PostsApiController {
 
     private final PostsService postsService;
+    private final MemberService memberService;
     private Authentication authentication;
 
     //게시판 글쓰기 기능
@@ -25,6 +27,10 @@ public class PostsApiController {
     public String write(PostsDto postsDto) {
         authentication = SecurityContextHolder.getContext().getAuthentication();
 
+        Long writerId = memberService.getMemberInfo(authentication.getName());
+        System.out.println(writerId);
+
+        postsDto.setWriter_id(writerId);
         postsDto.setWriter(authentication.getName());
         postsService.savePosts(postsDto);
 
@@ -50,7 +56,7 @@ public class PostsApiController {
     @GetMapping("/inquire_view/{id}")
     public String inquire_view(@PathVariable("id") Long id, Model model) {
         PostsDto postsDto = postsService.getPost(id);
-
+        System.out.println(postsDto.toString());
         model.addAttribute("postDto", postsDto);
 
         return "soriel_Inquiry_view";
@@ -58,18 +64,31 @@ public class PostsApiController {
 
     //게시글 수정 페이지로 이동
     @GetMapping("/post/update/{id}")
-    public String dis_update(@PathVariable("id)") Long id, Model model){
+    public String dis_update(@PathVariable("id") Long id, Model model){
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+
         PostsDto postsDto = postsService.getPost(id);
 
+        //현재 로그인 한 id
+        Long current_id = memberService.getMemberInfo(authentication.getName());
+        if(postsDto.getWriter_id() != current_id) {
+            //
+            return "redirect:/inquire_board";
+        }
         model.addAttribute("postDto", postsDto);
-        System.out.println(">>>>>>>>>>>>>>>>>"+postsDto.toString());
+
         return "soriel_Inquiry_update";
     }
 
     //게시글 수정 기능
     @PutMapping("/post/update/{id}")
-    public String update(@PathVariable("id") Long id, PostsUpdateRequestDto requestDto) {
+    @ResponseBody
+    public String update(@PathVariable("id") Long id, @RequestBody PostsUpdateRequestDto requestDto) {
+
         postsService.update(id, requestDto);
-        return "redirect:/";
+        return "redirect:/inquire_view/"+id;
     }
+
+
+
 }

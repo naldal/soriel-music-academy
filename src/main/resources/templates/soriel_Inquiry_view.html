@@ -22,6 +22,7 @@
             <th:block th:replace="fragment/soriel_Header :: headerFragment"></th:block>
 
             <input type="hidden" id="id" th:value="${postDto.id}">
+            <input type="hidden" id="writer_id" name="writer_id" th:value="${postDto.writer_id}">
             <div class="title" style="border-bottom: 1px solid #dddddd; margin-top: 100px;">
                 <h4 id="title" th:text="${postDto.title}"></h4>
                 <span style="display:inline-block; margin-top:3px">
@@ -39,7 +40,7 @@
 
             <div class="text-right">
                 <input id="deleteBtn" class="btn btn-outline-secondary" type="button" value="삭제" />
-                <input id="updateBtn" class="btn btn-outline-secondary" type="button" value="수정" th:onclick="|javascript:onclick:page('${boardDto.id}')|" />
+                <input id="updateBtn" class="btn btn-outline-secondary" type="button" value="수정" th:onclick="|javascript:onclick:page('${postDto.id}')|" />
                 <input sec:authorize="hasRole('ROLE_ADMIN')" id="replyBtn" class="btn btn-outline-secondary" type="button" value="답글" />
             </div>
 
@@ -58,6 +59,7 @@
     </body>
     <script>
         $(document).ready(function () {
+
             $("#reply").hide();
             $(".spc").hide();
             $("#replyBtn").click(function () {
@@ -69,7 +71,6 @@
         });
 
         function page(idx) {
-            alert(idx);
             var pageNum = idx;
             location.href = "/post/update/"+pageNum
         }
