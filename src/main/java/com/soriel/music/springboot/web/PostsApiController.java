@@ -64,7 +64,7 @@ public class PostsApiController {
 
     //게시글 수정 페이지로 이동
     @GetMapping("/post/update/{id}")
-    public String dis_update(@PathVariable("id") Long id, Model model){
+    public Boolean dis_update(@PathVariable("id") Long id, Model model){
         authentication = SecurityContextHolder.getContext().getAuthentication();
 
         PostsDto postsDto = postsService.getPost(id);
@@ -73,11 +73,11 @@ public class PostsApiController {
         Long current_id = memberService.getMemberInfo(authentication.getName());
         if(postsDto.getWriter_id() != current_id) {
             //
-            return "redirect:/inquire_board";
+            return false;
         }
         model.addAttribute("postDto", postsDto);
 
-        return "soriel_Inquiry_update";
+        return true;
     }
 
     //게시글 수정 기능
@@ -88,6 +88,27 @@ public class PostsApiController {
         postsService.update(id, requestDto);
         return "redirect:/inquire_view/"+id;
     }
+
+    @DeleteMapping("/post/delete/{id}")
+    @ResponseBody
+    public Boolean delete(@PathVariable("id") Long id){
+        System.out.println("|||||||||||| 와주시나용?");
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        PostsDto postsDto = postsService.getPost(id);
+
+        //현재 로그인 한 id
+        Long current_id = memberService.getMemberInfo(authentication.getName());
+        if(postsDto.getWriter_id() != current_id) {
+            //
+            return false;
+        }
+
+        postsService.delete(id);
+
+        return true;
+    }
+
 
 
 

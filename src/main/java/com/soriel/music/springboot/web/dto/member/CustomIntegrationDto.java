@@ -12,6 +12,7 @@ import java.util.Map;
 @Getter
 public class CustomIntegrationDto implements IntegrationKakaoAndMenber{
 
+    private Long id;
     private String customName;
     private String upwd;
     private DefaultOAuth2User defaultOAuth2User;
@@ -20,12 +21,14 @@ public class CustomIntegrationDto implements IntegrationKakaoAndMenber{
         new User(username, password, authorities);
         this.customName = integrationEntity.getName();
         this.upwd = integrationEntity.getUpwd();
+        this.id = integrationEntity.getId();
     }
 
     public CustomIntegrationDto(IntegrationEntity integrationEntity, Collection<? extends GrantedAuthority> authorities, Map<String, Object> attributes, String nameAttributeKey) {
         this.defaultOAuth2User = new DefaultOAuth2User(authorities, attributes, nameAttributeKey);
         this.customName = integrationEntity.getName();
-
+        this.id = integrationEntity.getId();
+        System.out.println(">>>getter id :"+id);
     }
 
     @Override

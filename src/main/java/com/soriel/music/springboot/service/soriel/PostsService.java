@@ -24,8 +24,6 @@ public class PostsService {
         return postsRepository.save(postsDto.toEntity()).getId();
     }
 
-
-
     @Transactional
     public List<PostsDto> getPostList() {
         List<PostsEntity> postsEntities = postsRepository.findAll();
@@ -74,5 +72,13 @@ public class PostsService {
 
         postsEntity.update(requestDto.getTitle(), requestDto.getContent());
         return id;
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        Optional<PostsEntity> postsEntityOptional = postsRepository.findById(id);
+        PostsEntity postsEntity = postsEntityOptional.get();
+
+        postsRepository.delete(postsEntity);
     }
 }
