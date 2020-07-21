@@ -30,6 +30,7 @@
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         <input type="hidden" name="_method" value="put">
         <input type="hidden" id="id" name="id" th:value="${postDto.id}">
+        <input type="hidden" id="writer_id" name="writer_id" th:value="${postDto.writer_id}">
 
 
         <div class="form-group">
@@ -62,12 +63,14 @@
 
         var data = {
             title : $("#title").val(),
-            content : $("#content").val()
+            content : $("#content").val(),
+            writer_id : $("#writer_id").val()
         };
         var id = $("#id").val();
 
         alert(data.title);
         alert(data.content);
+        alert(data.writer_id);
 
         $.ajax({
             type: 'PUT',
@@ -75,8 +78,8 @@
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
-        }).done(function(){
-            alert('글이 수정되었습니다');
+        }).done(function(data){
+            alert('수정 완료');
             window.location.href="/";
         }).fail(function(error){
             alert(JSON.stringify(error));

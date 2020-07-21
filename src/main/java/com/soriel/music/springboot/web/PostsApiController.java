@@ -5,6 +5,7 @@ import com.soriel.music.springboot.service.soriel.MemberService;
 import com.soriel.music.springboot.service.soriel.PostsService;
 import com.soriel.music.springboot.web.dto.posts.PostsDto;
 import com.soriel.music.springboot.web.dto.posts.PostsUpdateRequestDto;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -65,29 +66,33 @@ public class PostsApiController {
 
     //게시글 수정 페이지로 이동
     @GetMapping("/post/update/{id}")
-    public Boolean dis_update(@PathVariable("id") Long id, Model model){
+    public String dis_update(@PathVariable("id") Long id, Model model){
         authentication = SecurityContextHolder.getContext().getAuthentication();
 
         PostsDto postsDto = postsService.getPost(id);
 
-        //현재 로그인 한 id
-        Long current_id = memberService.getMemberInfo(authentication.getName());
-        if(postsDto.getWriter_id() != current_id) {
-            //
-            return false;
-        }
         model.addAttribute("postDto", postsDto);
 
-        return true;
+        return "soriel_Inquiry_update";
     }
 
     //게시글 수정 기능
     @PutMapping("/post/update/{id}")
     @ResponseBody
-    public String update(@PathVariable("id") Long id, @RequestBody PostsUpdateRequestDto requestDto) {
+    public Boolean update(@PathVariable("id") Long id, @RequestBody PostsUpdateRequestDto requestDto) {
+        //현재 로그인 한 id
+        Long current_id = memberService.getMemberInfo(authentication.getName());
+
+        System.out.println("writer id :"+requestDto.getWriter_id());
+        System.out.println("curr id :"+current_id);
+
+        if(requestDto.getWriter_id() != current_id) {
+            return false;
+        }
 
         postsService.update(id, requestDto);
-        return "redirect:/inquire_view/"+id;
+        //return "redirect:/inquire_view/"+id;
+        return true;
     }
 
     @DeleteMapping("/post/delete/{id}")
@@ -100,7 +105,6 @@ public class PostsApiController {
         //현재 로그인 한 id
         Long current_id = memberService.getMemberInfo(authentication.getName());
         if(postsDto.getWriter_id() != current_id) {
-            //
             return false;
         }
 

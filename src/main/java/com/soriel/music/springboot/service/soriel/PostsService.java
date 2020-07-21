@@ -80,6 +80,7 @@ public class PostsService {
         Optional<PostsEntity> postsEntityOptional = postsRepository.findById(id);
         PostsEntity postsEntity = postsEntityOptional.get();
 
+        System.out.println("updated content :::::"+requestDto.getContent());
         postsEntity.update(requestDto.getTitle(), requestDto.getContent());
         return id;
     }
