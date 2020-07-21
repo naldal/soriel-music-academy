@@ -48,7 +48,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="board : ${postList}">
+                <tr th:each="board : ${postList.content}">
                     <th scope="row">
                         <span th:text="${board.id}"></span>
                     </th>
@@ -73,15 +73,61 @@
 
                 </tbody>
             </table>
-            <nav id="pag" aria-label="Page navigation example">
+           <!-- <nav id="pag" aria-label="Page navigation example"
+                    th:with="start=${(board.number/maxPage)*maxPage+1},
+                             end=(${(board.totalPages == 0) ? 1 : (start+ (maxPage -1) < board.totalPages ? start + (maxPage-1) : board.totalPages)})">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    <li class="page-item" th:if="${start > 1}">
+                        <a class="page-link" th:href="@{/inquire_board?(page=0)}" th:text="처음"></a>
+                    </li>
+                    <li class="page-item" th:if="${start > 1}">
+                        <a class="page-link" th:href="@{/inquire_board?(page=${start-maxPage})}" th:text="이전"></a>
+                    </li>
+                    <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}">
+                        <a class="page-link" th:href="@{/inquire_board?(page=${page-1})}" th:text="${page}"></a>
+                    </li>
+                    <li class="page-item" th:if="${end < pages.totalPages}">
+                        <a class="page-link" th:href="@{/inquire_board?(page=${start+maxPage})}" th:text="다음"></a>
+                    </li>
+                    <li class="page-item" th:if="${end < pages.totalPages}">
+                        <a class="page-link" th:href="@{/inquire_board?(page=${pages.totalPages-1})}" th:text="마지막"></a>
+                    </li>
+                </ul>
+            </nav>-->
+            <nav id="pag" style="text-align: center;">
+                <ul class="pagination justify-content-center"
+                    th:with="start=${T(Math).floor(postList.number/10)*10 + 1},
+                    last=(${start + 9 < postList.totalPages ? start + 9 : postList.totalPages})">
+                    <li class="page-item">
+                        <a class="page-link" th:href="@{/inquire_board(page=1)}" aria-label="First">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <li class="page-item" th:class="${postList.first} ? 'disabled'">
+                        <a class="page-link" th:href="${postList.first} ? '#' :@{/inquire_board(page=${postList.number})}" aria-label="Previous">
+                            <span aria-hidden="true">&lt;</span>
+                        </a>
+                    </li>
+
+                    <li class="page-item" th:each="page: ${#numbers.sequence(start, last)}" th:class="${page == postList.number + 1} ? 'active'">
+                        <a class="page-link" th:text="${page}" th:href="@{/inquire_board(page=${page})}"></a>
+                    </li>
+
+                    <li class="page-item" th:class="${postList.last} ? 'disabled'">
+                        <a class="page-link" th:href="${postList.last} ? '#' : @{/inquire_board(page=${postList.number + 2})}" aria-label="Next">
+                            <span aria-hidden="true">&gt;</span>
+                        </a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link" th:href="@{/inquire_board(page=${postList.totalPages})}" aria-label="Last">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
+
         </div>
     </body>
 </html>

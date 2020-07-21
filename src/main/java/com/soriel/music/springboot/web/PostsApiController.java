@@ -6,13 +6,14 @@ import com.soriel.music.springboot.service.soriel.PostsService;
 import com.soriel.music.springboot.web.dto.posts.PostsDto;
 import com.soriel.music.springboot.web.dto.posts.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -39,10 +40,10 @@ public class PostsApiController {
 
     //게시판 리스트 이동
     @GetMapping("/inquire_board")
-    public String postList(Model model) {
-        List<PostsDto> postsList = postsService.getPostList();
+    public String postList(Model model, @PageableDefault Pageable pageable) {
+        Page<PostsEntity> postList = postsService.getPostList(pageable);
 
-        model.addAttribute("postList", postsList);
+        model.addAttribute("postList", postList);
         return "soriel_Inquire_board";
     }
 
@@ -92,7 +93,6 @@ public class PostsApiController {
     @DeleteMapping("/post/delete/{id}")
     @ResponseBody
     public Boolean delete(@PathVariable("id") Long id){
-        System.out.println("|||||||||||| 와주시나용?");
         authentication = SecurityContextHolder.getContext().getAuthentication();
 
         PostsDto postsDto = postsService.getPost(id);
@@ -108,8 +108,6 @@ public class PostsApiController {
 
         return true;
     }
-
-
 
 
 }

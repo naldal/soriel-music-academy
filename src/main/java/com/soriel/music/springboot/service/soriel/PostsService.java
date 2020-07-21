@@ -1,15 +1,17 @@
 package com.soriel.music.springboot.service.soriel;
 
-import com.soriel.music.springboot.domain.soriel.IntegrationEntity;
 import com.soriel.music.springboot.domain.soriel.PostsEntity;
 import com.soriel.music.springboot.domain.soriel.PostsRepository;
 import com.soriel.music.springboot.web.dto.posts.PostsDto;
 import com.soriel.music.springboot.web.dto.posts.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,9 +26,9 @@ public class PostsService {
         return postsRepository.save(postsDto.toEntity()).getId();
     }
 
-    @Transactional
-    public List<PostsDto> getPostList() {
-        List<PostsEntity> postsEntities = postsRepository.findAll();
+    /*@Transactional
+    public Page<PostsDto> getPostList(Pageable pageable) {
+        Page<PostsEntity> postsEntities = postsRepository.findAll(pageable);
         List<PostsDto> postsDtoList = new ArrayList<>();
 
         for (PostsEntity postsEntity : postsEntities) {
@@ -44,6 +46,14 @@ public class PostsService {
         }
 
         return postsDtoList;
+    }*/
+
+    @Transactional
+    public Page<PostsEntity> getPostList(Pageable pageable) {
+        int page = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber()-1);
+        pageable = PageRequest.of(page, 5, new Sort(Sort.Direction.DESC, "id"));
+
+        return postsRepository.findAll(pageable);
     }
 
     @Transactional
@@ -81,4 +91,12 @@ public class PostsService {
 
         postsRepository.delete(postsEntity);
     }
+
+    @Transactional
+    public int findAllPostNum() {
+        List<PostsEntity> postsEntityList = postsRepository.findAll();
+
+        return postsEntityList.size();
+    }
+
 }
