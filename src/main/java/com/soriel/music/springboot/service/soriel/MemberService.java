@@ -1,5 +1,6 @@
 package com.soriel.music.springboot.service.soriel;
 
+import com.soriel.music.springboot.domain.Role;
 import com.soriel.music.springboot.domain.soriel.IntegrationEntity;
 import com.soriel.music.springboot.domain.soriel.IntegrationRepository;
 import com.soriel.music.springboot.web.dto.member.CustomIntegrationDto;
@@ -17,6 +18,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -24,13 +26,16 @@ public class MemberService implements UserDetailsService {
 
     private IntegrationRepository integrationRepository;
 
-    @Transactional
     public IntegrationEntity joinUser(IntegrationDto integrationDto) {
         // 비밀번호 암호화
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         integrationDto.setUpwd(passwordEncoder.encode(integrationDto.getUpwd()));
 
+        if (integrationDto.getName().equals("admin")) {
 
+            System.out.println(integrationDto.getName());
+            return integrationRepository.save(integrationDto.toAdminEntity());
+        }
         return integrationRepository.save(integrationDto.toEntity());
     }
 

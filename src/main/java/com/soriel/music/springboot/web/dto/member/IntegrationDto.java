@@ -33,6 +33,17 @@ public class IntegrationDto {
                 .build();
     }
 
+    public IntegrationEntity toAdminEntity() {
+        return IntegrationEntity.builder()
+                .id(id)
+                .name(name)
+                .email(email)
+                .upwd(upwd)
+                .role(Role.ADMIN)
+                .build();
+    }
+
+
     @Builder
     public IntegrationDto(Long id, String name, String email, String upwd, String youtubeLink, Role role) {
         this.id = id;

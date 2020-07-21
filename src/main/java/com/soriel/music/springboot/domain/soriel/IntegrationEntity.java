@@ -55,4 +55,8 @@ public class IntegrationEntity extends BaseTimeEntity {
 
         return this;
     }
+
+    public static IntegrationEntity createIntegration(){
+        return new IntegrationEntity();
+    }
 }
