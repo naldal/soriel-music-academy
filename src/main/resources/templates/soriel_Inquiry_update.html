@@ -68,10 +68,6 @@
         };
         var id = $("#id").val();
 
-        alert(data.title);
-        alert(data.content);
-        alert(data.writer_id);
-
         $.ajax({
             type: 'PUT',
             url: '/post/update/'+id,

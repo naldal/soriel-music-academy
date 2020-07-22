@@ -1,9 +1,12 @@
 package com.soriel.music.springboot.service.soriel;
 
-import com.soriel.music.springboot.domain.soriel.PostsEntity;
-import com.soriel.music.springboot.domain.soriel.PostsRepository;
+import com.soriel.music.springboot.domain.posts.PostsEntity;
+import com.soriel.music.springboot.domain.posts.PostsRepository;
+import com.soriel.music.springboot.domain.posts.ReplyEntity;
+import com.soriel.music.springboot.domain.posts.ReplyRepository;
 import com.soriel.music.springboot.web.dto.posts.PostsDto;
 import com.soriel.music.springboot.web.dto.posts.PostsUpdateRequestDto;
+import com.soriel.music.springboot.web.dto.posts.ReplyDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,6 +23,7 @@ import java.util.Optional;
 public class PostsService {
 
     private final PostsRepository postsRepository;
+    private final ReplyRepository replyRepository;
 
     @Transactional
     public Long savePosts(PostsDto postsDto) {
@@ -80,7 +84,6 @@ public class PostsService {
         Optional<PostsEntity> postsEntityOptional = postsRepository.findById(id);
         PostsEntity postsEntity = postsEntityOptional.get();
 
-        System.out.println("updated content :::::"+requestDto.getContent());
         postsEntity.update(requestDto.getTitle(), requestDto.getContent());
         return id;
     }
@@ -100,4 +103,29 @@ public class PostsService {
         return postsEntityList.size();
     }
 
+    @Transactional
+    public Long save_reply(ReplyDto replyDto) {
+        return replyRepository.save(replyDto.toEntity()).getId();
+    }
+
+    @Transactional
+    public ReplyDto getReply(Long id) {
+        Optional<ReplyEntity> replyEntityOptional = replyRepository.findById(id);
+        ReplyEntity replyEntity = null;
+        try {
+            replyEntity = replyEntityOptional.get();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return ReplyDto.builder()
+                .id(replyEntity.getId())
+                .reply_content(replyEntity.getReply_content())
+                .reply_writer(replyEntity.getReply_writer())
+                .post_id(replyEntity.getPost_id())
+                .createdDate(replyEntity.getCreatedDate())
+                .modifiedDate(replyEntity.getModifiedDate())
+                .build();
+    }
 }

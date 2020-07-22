@@ -1,11 +1,11 @@
 package com.soriel.music.springboot.web;
 
-import com.soriel.music.springboot.domain.soriel.PostsEntity;
+import com.soriel.music.springboot.domain.posts.PostsEntity;
 import com.soriel.music.springboot.service.soriel.MemberService;
 import com.soriel.music.springboot.service.soriel.PostsService;
 import com.soriel.music.springboot.web.dto.posts.PostsDto;
 import com.soriel.music.springboot.web.dto.posts.PostsUpdateRequestDto;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.soriel.music.springboot.web.dto.posts.ReplyDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -58,8 +58,10 @@ public class PostsApiController {
     @GetMapping("/inquire_view/{id}")
     public String inquire_view(@PathVariable("id") Long id, Model model) {
         PostsDto postsDto = postsService.getPost(id);
-        System.out.println(postsDto.toString());
+        ReplyDto replyDto = postsService.getReply(id);
+
         model.addAttribute("postDto", postsDto);
+        model.addAttribute("replyDto", replyDto);
 
         return "soriel_Inquiry_view";
     }
@@ -95,6 +97,7 @@ public class PostsApiController {
         return true;
     }
 
+    //게시글 삭제처리
     @DeleteMapping("/post/delete/{id}")
     @ResponseBody
     public Boolean delete(@PathVariable("id") Long id){
@@ -111,6 +114,21 @@ public class PostsApiController {
         postsService.delete(id);
 
         return true;
+    }
+
+    //답장 등록 기능
+    @PostMapping("/post/reply/{post_id}")
+    @ResponseBody
+    public Boolean reply_function(@PathVariable("post_id") Long post_id, @RequestBody ReplyDto replyDto) {
+        replyDto.setReply_writer("administrator");
+
+        Long verify = postsService.save_reply(replyDto);
+        if (verify >= 0L) {
+            System.out.println(":: true");
+            return true;
+        }
+        System.out.println(":: false");
+        return false;
     }
 
 

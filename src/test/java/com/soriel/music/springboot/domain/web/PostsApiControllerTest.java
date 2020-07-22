@@ -1,7 +1,7 @@
 package com.soriel.music.springboot.domain.web;
 
-import com.soriel.music.springboot.domain.soriel.PostsEntity;
-import com.soriel.music.springboot.domain.soriel.PostsRepository;
+import com.soriel.music.springboot.domain.posts.PostsEntity;
+import com.soriel.music.springboot.domain.posts.PostsRepository;
 import com.soriel.music.springboot.web.dto.posts.PostsUpdateRequestDto;
 import org.junit.After;
 import org.junit.Test;

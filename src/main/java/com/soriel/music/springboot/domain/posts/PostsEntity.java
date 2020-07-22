@@ -1,4 +1,4 @@
-package com.soriel.music.springboot.domain.soriel;
+package com.soriel.music.springboot.domain.posts;
 
 import com.soriel.music.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
