@@ -4,8 +4,13 @@ import com.soriel.music.springboot.service.soriel.MemberService;
 import com.soriel.music.springboot.web.dto.member.IntegrationDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
+import java.util.Map;
 
 @Controller
 @AllArgsConstructor
@@ -27,9 +32,18 @@ public class MemberController {
 
     //회원가입 처리
     @PostMapping("/user/signup")
-    public String execSignup(IntegrationDto memberDto) {
-        memberService.joinUser(memberDto);
+    public String execSignup(@Valid IntegrationDto memberDto, Model model, Errors errors) {
+        if (errors.hasErrors()) {
+            model.addAttribute("memberDto", memberDto);
 
+            // Handling invalid field and message
+            Map<String, String> validatorResult = memberService.validateHandling(errors);
+            for (String key : validatorResult.keySet()){
+                model.addAttribute(key, validatorResult.get(key));
+            }
+            return "/soriel_Sign_up";
+        }
+        memberService.joinUser(memberDto);
         return "redirect:/user/login_page";
     }
 

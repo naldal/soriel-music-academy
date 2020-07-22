@@ -6,6 +6,7 @@ import com.soriel.music.springboot.service.soriel.PostsService;
 import com.soriel.music.springboot.web.dto.posts.PostsDto;
 import com.soriel.music.springboot.web.dto.posts.PostsUpdateRequestDto;
 import com.soriel.music.springboot.web.dto.posts.ReplyDto;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,7 +31,6 @@ public class PostsApiController {
         authentication = SecurityContextHolder.getContext().getAuthentication();
 
         Long writerId = memberService.getMemberInfo(authentication.getName());
-        System.out.println(writerId);
 
         postsDto.setWriter_id(writerId);
         postsDto.setWriter(authentication.getName());
@@ -58,7 +58,12 @@ public class PostsApiController {
     @GetMapping("/inquire_view/{id}")
     public String inquire_view(@PathVariable("id") Long id, Model model) {
         PostsDto postsDto = postsService.getPost(id);
-        ReplyDto replyDto = postsService.getReply(id);
+        ReplyDto replyDto;
+        try {
+            replyDto = postsService.getReply(id);
+        } catch (NullPointerException e) {
+            replyDto = null;
+        }
 
         model.addAttribute("postDto", postsDto);
         model.addAttribute("replyDto", replyDto);
@@ -72,7 +77,6 @@ public class PostsApiController {
         authentication = SecurityContextHolder.getContext().getAuthentication();
 
         PostsDto postsDto = postsService.getPost(id);
-
         model.addAttribute("postDto", postsDto);
 
         return "soriel_Inquiry_update";
@@ -85,15 +89,8 @@ public class PostsApiController {
         //현재 로그인 한 id
         Long current_id = memberService.getMemberInfo(authentication.getName());
 
-        System.out.println("writer id :"+requestDto.getWriter_id());
-        System.out.println("curr id :"+current_id);
-
-        if(requestDto.getWriter_id() != current_id) {
-            return false;
-        }
-
+        if(requestDto.getWriter_id() != current_id) return false;
         postsService.update(id, requestDto);
-        //return "redirect:/inquire_view/"+id;
         return true;
     }
 
@@ -110,9 +107,7 @@ public class PostsApiController {
         if(postsDto.getWriter_id() != current_id) {
             return false;
         }
-
         postsService.delete(id);
-
         return true;
     }
 
@@ -121,15 +116,22 @@ public class PostsApiController {
     @ResponseBody
     public Boolean reply_function(@PathVariable("post_id") Long post_id, @RequestBody ReplyDto replyDto) {
         replyDto.setReply_writer("administrator");
-
-        Long verify = postsService.save_reply(replyDto);
-        if (verify >= 0L) {
-            System.out.println(":: true");
-            return true;
-        }
-        System.out.println(":: false");
-        return false;
+        return postsService.save_reply(replyDto) >= 0L ? true : false;
     }
 
+    //답장 삭제 기능
+    @DeleteMapping("/post/reply/{reply_id}")
+    @ResponseBody
+    public Boolean reply_delete(@PathVariable("reply_id") Long reply_id) {
+        postsService.deleteReply(reply_id);
+        return true;
+    }
 
+    //답글 수정 기능
+    @PutMapping("/post/reply/{reply_id}")
+    @ResponseBody
+    public Long update_reply(@PathVariable("reply_id") Long reply_id, @RequestBody ReplyDto replyDto) {
+        postsService.update_reply(reply_id, replyDto);
+        return reply_id;
+    }
 }

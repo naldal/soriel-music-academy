@@ -47,8 +47,8 @@
             </div>
 
 
-            <!--reply area-->
             <div th:if="${replyDto != null}" style="display:margin-top:3px">
+                <input type="hidden" id="reply_id" th:value="${replyDto.id}">
                 <label style="font-size: 24px; border-bottom: 1px solid #dddddd; margin-top: 60px;">답글</label>
                 <span>
                     <p th:inline="text">
@@ -56,16 +56,23 @@
                     </p>
                 </span>
 
-                <div class="content shadow-sm p-3 mb-5 bg-white rounded" style="font-size: 24px; margin-top: 30px; margin-bottom: 20px !important;" th:if="${replyDto != null}">
+                <div id="reply_content_div" class="content shadow-sm p-3 mb-5 bg-white rounded" style="font-size: 24px; margin-top: 30px; margin-bottom: 20px !important;" th:if="${replyDto != null}">
                     <p id="reply_content" class="text-break" th:inline="text">
                         [[${replyDto.reply_content}]]
                     </p>
                 </div>
+
+                <div id="reply_update_div" class="form-group">
+                    <textarea id="reply_content_update" class="form-control"rows="10"></textarea>
+                </div>
+
                 <div class="text-right">
                     <input id="reply_deleteBtn" class="btn btn-outline-secondary" type="button" value="삭제" />
                     <input id="reply_updateBtn" class="btn btn-outline-secondary" type="button" value="수정" />
+                    <input id="do_reply_updateBtn" class="btn btn-outline-secondary" type="button" value="수정하기" />
                 </div>
             </div>
+            <!-- reply area -->
 
             <div class="form-group" id="reply" style="font-size: 24px; border-bottom: 1px solid #dddddd; margin-top: 60px;">
                 <label>답글</label>
@@ -80,9 +87,10 @@
     </body>
     <script>
         $(document).ready(function () {
-
             var id = $("#id").val();
 
+            $("#reply_update_div").hide();
+            $("#do_reply_updateBtn").hide();
             $("#reply").hide();
             $(".spc").hide();
             $("#replyBtn").click(function () {
@@ -134,14 +142,49 @@
             }).fail(function(error) {
                 alert(JSON.stringify(error));
             });
+        });
+
+        $("#reply_deleteBtn").click(function(){
+            var reply_id = $("#reply_id").val();
 
             $.ajax({
                 type: 'DELETE',
-                url: '/post/reply/'+post_id,
+                url: '/post/reply/'+reply_id,
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8'
             }).done(function(data){
-                alert('삭제 완료');
+                alert('답글 작성 완료');
+                window.location.href = window.location.href;
+            }).fail(function(error){
+                alert(JSON.stringify(error));
+            });
+        });
+
+        $("#reply_updateBtn").click(function(){
+            $("#reply_update_div").show();
+            $("#reply_content_div").hide();
+            $("#do_reply_updateBtn").show();
+            $("#reply_deleteBtn").hide();
+            $("#reply_updateBtn").hide();
+        });
+
+        $("#do_reply_updateBtn").click(function() {
+            alert("a1");
+            let reply_id = $("#reply_id").val();
+
+            var data = {
+                reply_id: $("#reply_id").val(),
+                reply_content: $("#reply_content_update").val()
+            };
+
+            $.ajax({
+                type: 'PUT',
+                url: '/post/reply/'+reply_id,
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(data)
+            }).done(function(data){
+                alert('답글이 수정되었습니다');
                 window.location.href = window.location.href;
             }).fail(function(error){
                 alert(JSON.stringify(error));
