@@ -33,16 +33,7 @@ public class MemberController {
     //회원가입 처리
     @PostMapping("/user/signup")
     public String execSignup(@Valid IntegrationDto memberDto, Model model, Errors errors) {
-        if (errors.hasErrors()) {
-            model.addAttribute("memberDto", memberDto);
 
-            // Handling invalid field and message
-            Map<String, String> validatorResult = memberService.validateHandling(errors);
-            for (String key : validatorResult.keySet()){
-                model.addAttribute(key, validatorResult.get(key));
-            }
-            return "/soriel_Sign_up";
-        }
         memberService.joinUser(memberDto);
         return "redirect:/user/login_page";
     }
