@@ -1,7 +1,7 @@
 # Project exclude paths
 /.gradle/
 .idea
-application-oauth.yml
+application-oauth.properties
 # Project exclude paths
 /build/
 /out/
