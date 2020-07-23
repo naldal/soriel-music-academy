@@ -6,7 +6,7 @@ import com.soriel.music.springboot.service.soriel.PostsService;
 import com.soriel.music.springboot.web.dto.posts.PostsDto;
 import com.soriel.music.springboot.web.dto.posts.PostsUpdateRequestDto;
 import com.soriel.music.springboot.web.dto.posts.ReplyDto;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

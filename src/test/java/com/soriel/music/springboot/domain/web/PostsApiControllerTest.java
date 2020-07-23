@@ -38,33 +38,4 @@ public class PostsApiControllerTest {
         postsRepository.deleteAll();
     }
 
-    @Test
-    public void posts_update() throws Exception {
-        //given
-        PostsEntity savedPosts = postsRepository.save(PostsEntity.builder().title("title").content("content").category("입학상담").build());
-        Long updateId = savedPosts.getId();
-        String expectedTitle = "title2";
-        String expectedContent = "content2";
-        String expectedCategory = "면접";
-
-        System.out.println(">>>>>>>>>>>"+updateId);
-
-        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder().title(expectedTitle).content(expectedContent).build();
-
-        String url = "http://localhost:"+port+"/post/"+updateId;
-
-        HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
-
-        //when
-        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
-
-        //then
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseEntity.getBody()).isGreaterThan(0L);
-
-        List<PostsEntity> all = postsRepository.findAll();
-        assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
-        assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
-        assertThat(all.get(0).getCategory()).isEqualTo(expectedCategory);
-    }
 }
