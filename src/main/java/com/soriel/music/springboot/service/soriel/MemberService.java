@@ -53,8 +53,13 @@ public class MemberService implements UserDetailsService {
 
     @Transactional
     public Long getMemberInfo(String username) {
+        IntegrationEntity integrationEntity;
         Optional<IntegrationEntity> integrationEntityOptional =  integrationRepository.findByName(username);
-        IntegrationEntity integrationEntity = integrationEntityOptional.get();
+        try {
+            integrationEntity = integrationEntityOptional.get();
+        } catch (Exception e) {
+            return null;
+        }
 
         System.out.println(integrationEntity.getId());
         return integrationEntity.getId();

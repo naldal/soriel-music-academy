@@ -57,6 +57,15 @@ public class PostsApiController {
     //문의 게시물 보기
     @GetMapping("/inquire_view/{id}")
     public String inquire_view(@PathVariable("id") Long id, Model model) {
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        Long authenticationId = memberService.getMemberInfo(authentication.getName());
+        System.out.println(authenticationId);
+        if (authenticationId == null) {
+            return "soriel_Login_page";
+        }
+
+
         PostsDto postsDto = postsService.getPost(id);
         ReplyDto replyDto;
         try {
