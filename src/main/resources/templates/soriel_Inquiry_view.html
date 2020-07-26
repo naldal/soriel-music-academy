@@ -42,7 +42,7 @@
 
             <div class="text-right">
                 <input id="deleteBtn" class="btn btn-outline-secondary" type="button" value="삭제" th:if="${#authentication.principal.id == postDto.writer_id}"/>
-                <input id="updateBtn" class="btn btn-outline-secondary" type="button" value="수정" th:onclick="|javascript:onclick:page('${postDto.id}')|" th:if="${#authentication.principal.id == postDto.writer_id}" />
+                <input id="updateBtnf" class="btn btn-outline-secondary" type="button" value="수정" th:if="${#authentication.principal.id == postDto.writer_id}" />
                 <input sec:authorize="hasRole('ROLE_ADMIN')" id="replyBtn" class="btn btn-outline-secondary" type="button" value="답글" th:if="${replyDto == null}"/>
             </div>
 
@@ -116,10 +116,15 @@
             });
         });
 
-        function page(idx) {
-            var pageNum = idx;
-            location.href = "/post/update/"+pageNum
-        }
+        $("#updateBtnf").click(function() {
+            $.ajax({
+                type: 'GET',
+                url: '/post/update'+id,
+                dataType: 'json'
+                contentType: 'application/json; charset=utf-8'
+                data: id
+            });
+        });
 
         $("#reply_submit").click(function(){
 

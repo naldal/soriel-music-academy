@@ -51,7 +51,6 @@ public class MemberService implements UserDetailsService {
         return new CustomIntegrationDto(integrationEntity, integrationEntity.getName(), integrationEntity.getUpwd(), authorities);
     }
 
-    @Transactional
     public Long getMemberInfo(String username) {
         Optional<IntegrationEntity> integrationEntityOptional =  integrationRepository.findByName(username);
         IntegrationEntity integrationEntity = integrationEntityOptional.get();
