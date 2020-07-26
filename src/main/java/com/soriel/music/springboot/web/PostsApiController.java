@@ -57,6 +57,10 @@ public class PostsApiController {
     //문의 게시물 보기
     @GetMapping("/inquire_view/{id}")
     public String inquire_view(@PathVariable("id") Long id, Model model) {
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+        Long authenticationId = memberService.getMemberInfo(authentication.getName());
+        if (authenticationId == null) return "soriel_Login_page";
+
         PostsDto postsDto = postsService.getPost(id);
         ReplyDto replyDto;
         try {
@@ -89,7 +93,7 @@ public class PostsApiController {
         //현재 로그인 한 id
         Long current_id = memberService.getMemberInfo(authentication.getName());
 
-        if(requestDto.getWriter_id() != current_id) return false;
+        if(!requestDto.getWriter_id().equals(current_id)) return false;
         postsService.update(id, requestDto);
         return true;
     }
@@ -104,7 +108,7 @@ public class PostsApiController {
 
         //현재 로그인 한 id
         Long current_id = memberService.getMemberInfo(authentication.getName());
-        if(postsDto.getWriter_id() != current_id) {
+        if(!postsDto.getWriter_id().equals(current_id)) {
             return false;
         }
         postsService.delete(id);
@@ -116,7 +120,7 @@ public class PostsApiController {
     @ResponseBody
     public Boolean reply_function(@PathVariable("post_id") Long post_id, @RequestBody ReplyDto replyDto) {
         replyDto.setReply_writer("administrator");
-        return postsService.save_reply(replyDto) >= 0L ? true : false;
+        return postsService.save_reply(replyDto)>=0L;
     }
 
     //답장 삭제 기능

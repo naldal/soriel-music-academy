@@ -53,9 +53,8 @@ public class MemberService implements UserDetailsService {
 
     public Long getMemberInfo(String username) {
         Optional<IntegrationEntity> integrationEntityOptional =  integrationRepository.findByName(username);
-        IntegrationEntity integrationEntity = integrationEntityOptional.get();
+        IntegrationEntity integrationEntity = integrationEntityOptional.isPresent() ? integrationEntityOptional.get() : null;
 
-        System.out.println(integrationEntity.getId());
-        return integrationEntity.getId();
+        return integrationEntity != null ? integrationEntity.getId() : null;
     }
 }
