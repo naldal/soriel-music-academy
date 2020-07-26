@@ -23,6 +23,7 @@ public class PostsDto {
 
     public PostsEntity toEntity() {
         return PostsEntity.builder()
+                .id(id)
                 .title(title)
                 .writer(writer)
                 .content(content)

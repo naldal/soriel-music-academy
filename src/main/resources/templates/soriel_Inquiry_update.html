@@ -76,7 +76,7 @@
             data: JSON.stringify(data)
         }).done(function(data){
             alert('수정 완료');
-            window.location.href="/";
+            window.location.href="/inquire_view/"+id;
         }).fail(function(error){
             alert(JSON.stringify(error));
         });
