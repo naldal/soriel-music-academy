@@ -27,7 +27,7 @@
     </div>
 
     <form method="put" th:action="@{'/post/update/'+${postDto.id}}">
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+<!--        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
         <input type="hidden" name="_method" value="put">
         <input type="hidden" id="id" name="id" th:value="${postDto.id}">
         <input type="hidden" id="writer_id" name="writer_id" th:value="${postDto.writer_id}">

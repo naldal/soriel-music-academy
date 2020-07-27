@@ -92,7 +92,6 @@ public class PostsApiController {
     public Boolean update(@PathVariable("id") Long id, @RequestBody PostsUpdateRequestDto requestDto) {
         //현재 로그인 한 id
         Long current_id = memberService.getMemberInfo(authentication.getName());
-
         if(!requestDto.getWriter_id().equals(current_id)) return false;
         postsService.update(id, requestDto);
         return true;
