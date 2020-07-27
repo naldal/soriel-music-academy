@@ -52,6 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .csrf()
                     .ignoringAntMatchers("/h2-console/**")
                     .ignoringAntMatchers("/post/**")
+                    .ignoringAntMatchers("/video_board/**")
                 .and() //로그아웃 설정
                     .logout()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))

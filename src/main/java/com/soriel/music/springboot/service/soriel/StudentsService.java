@@ -5,6 +5,7 @@ import com.soriel.music.springboot.domain.student.StudentsRepository;
 import java.util.List;
 import java.util.Optional;
 
+import com.soriel.music.springboot.web.dto.student.StudentDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,8 @@ public class StudentsService {
         return list;
     }
 
-    public void findOneById(Long id) {
-        Optional<Students> var = studentsRepository.findById(id);
+    public Students findOneById(Long id) {
+        Optional<Students> studentsOptional = studentsRepository.findById(id);
+        return studentsOptional.isPresent() ? studentsOptional.get() : null;
     }
 }
