@@ -21,6 +21,7 @@
         />
         <link rel="stylesheet" href="../static/css/soriel_Video_board.css" />
         <link rel="stylesheet" th:href="@{/static/css/soriel_Header.css}" />
+        <script th:src="@{/static/js/video_board.js}"></script>
     </head>
     <body>
         <div class="container">
@@ -43,38 +44,11 @@
                 </div>
                 <div class="col">
                     <div th:if="${link!=null}" class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" th:src="@{https://www.youtube.com/embed/{link}}" allowfullscreen></iframe>
-                        <!-- I faced the same error when displaying YouTube links. 
-                            For example: https://www.youtube.com/watch?v=8WkuChVeL0s
-                            
-                            I replaced watch?v= with embed/ 
-                            so the valid link will be: https://www.youtube.com/embed/8WkuChVeL0s 
-                        
-                            todo : watch?v= 를 embed/ 로.. 백단에서 바꿔줄 것.
-                        -->
+                        <iframe class="embed-responsive-item" th:src="@{http://www.youtube.com/embed/{link}}" allowfullscreen></iframe>
+
                     </div>
                 </div>
         </div>
         <!-- container -->
     </body>
-    <script>
-        $(".clickhere").click(function() {
-            var id = $(this).children('.student_id').val();
-
-            alert(id);
-
-            $.ajax({
-                type: 'POST',
-                url: '/video_board/'+id,
-                dataType: 'text',
-                contentType: 'application/json, charset=utf-8',
-                data: JSON.stringify(id)
-            }).done(function(ajaxReturnString) {
-                alert('이동되었습니다.');
-                window.location.href = '/video_board/'+id+'?link='+ajaxReturnString
-            }).fail(function(error){
-                alert(JSON.stringify(error));
-            });
-        });
-    </script>
 </html>
