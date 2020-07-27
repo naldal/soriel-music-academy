@@ -30,20 +30,14 @@ public class MemberService implements UserDetailsService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         integrationDto.setUpwd(passwordEncoder.encode(integrationDto.getUpwd()));
 
-        if (integrationDto.getName().equals("admin")) {
-
-            System.out.println(integrationDto.getName());
-            return integrationRepository.save(integrationDto.toAdminEntity());
-        }
         return integrationRepository.save(integrationDto.toEntity());
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<IntegrationEntity> integrationEntityOptional = integrationRepository.findByName(username);
-        IntegrationEntity integrationEntity = integrationEntityOptional.get();
-
-        if (integrationEntity == null) throw new UsernameNotFoundException(username);
+        //IntegrationEntity integrationEntity = integrationEntityOptional.get();
+        IntegrationEntity integrationEntity = integrationEntityOptional.orElse(null);
 
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(integrationEntity.getRoleKey()));
@@ -53,7 +47,7 @@ public class MemberService implements UserDetailsService {
 
     public Long getMemberInfo(String username) {
         Optional<IntegrationEntity> integrationEntityOptional =  integrationRepository.findByName(username);
-        IntegrationEntity integrationEntity = integrationEntityOptional.isPresent() ? integrationEntityOptional.get() : null;
+        IntegrationEntity integrationEntity = integrationEntityOptional.orElse(null);
 
         return integrationEntity != null ? integrationEntity.getId() : null;
     }

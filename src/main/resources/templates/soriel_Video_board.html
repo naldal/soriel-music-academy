@@ -34,30 +34,10 @@
 
             <div class="row">
                 <div class="col-3 justify-content-center">
-                    <div class="card text-center">
+                    <div th:each="student : ${students}" class="card text-center">
                         <div class="card-body" >
-                            <p class="card-text">김영민</p>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">오지환</p>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">설지환</p>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">김민수</p>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">연정희</p>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">구만설</p>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">송주희</p>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">구단설</p>
+                            <p class="card-text">[[${student.student_name}]]</p>
+                            <input id="student_id" type="hidden" th:value="${student.id}">
                         </div>
                     </div>
                 </div>
@@ -77,4 +57,20 @@
         </div>
         <!-- container -->
     </body>
+    <script>
+        var id = $("#student_id").val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/video_board/'+id,
+            dataType: 'json',
+            contentType: 'application/json, charset=utf-8',
+            data: JSON.stringify(id)
+        }).done(function(data) {
+            alert('이동되었습니다.');
+        }).fail(function(error){
+            alert(JSON.stringify(error));
+        });
+
+    </script>
 </html>

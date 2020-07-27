@@ -18,9 +18,8 @@ import java.util.Collections;
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
-    private final KakaoRepository kakaoRepository;
     private final IntegrationRepository integrationRepository;
-    private final HttpSession httpSession;
+
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {

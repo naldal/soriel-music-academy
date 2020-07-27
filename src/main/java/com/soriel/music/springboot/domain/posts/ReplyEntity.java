@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Entity
+@Entity(name = "reply")
 @NoArgsConstructor
 public class ReplyEntity extends BaseTimeEntity {
 

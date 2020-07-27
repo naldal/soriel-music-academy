@@ -17,7 +17,6 @@ public class IntegrationDto {
     private String name;
     private String email;
     private String upwd;
-    private String youtubeLink;
     private Role role;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
@@ -28,7 +27,6 @@ public class IntegrationDto {
                 .name(name)
                 .email(email)
                 .upwd(upwd)
-                .youtubeLink(youtubeLink)
                 .role(Role.MEMBER)
                 .build();
     }
@@ -45,12 +43,11 @@ public class IntegrationDto {
 
 
     @Builder
-    public IntegrationDto(Long id, String name, String email, String upwd, String youtubeLink, Role role) {
+    public IntegrationDto(Long id, String name, String email, String upwd, Role role) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.upwd = upwd;
-        this.youtubeLink = youtubeLink;
         this.role = role;
     }
 }

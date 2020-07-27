@@ -32,20 +32,16 @@ public class IntegrationEntity extends BaseTimeEntity {
     @Column(nullable = true, length = 200)
     private String upwd;
 
-    @Column(nullable = true, length = 200)
-    private String youtubeLink;
-
     @Enumerated(EnumType.STRING)
     @Column
     private Role role;
 
     @Builder
-    public IntegrationEntity(Long id, String email, String name, String upwd, String youtubeLink, Role role) {
+    public IntegrationEntity(Long id, String email, String name, String upwd, Role role) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.upwd = upwd;
-        this.youtubeLink = youtubeLink;
         this.role = role;
     }
 

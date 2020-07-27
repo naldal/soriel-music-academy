@@ -49,10 +49,6 @@ public class PostsEntity extends BaseTimeEntity {
 
     }
 
-    public void reply_update(String verify_reply) {
-        this.verify_reply = verify_reply;
-    }
-
     public void update(String title, String content) {
         this.title = title;
         this.content = content;

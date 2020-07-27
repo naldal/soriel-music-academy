@@ -18,10 +18,4 @@ public class SorielController {
         return "soriel_Picture_board";
     }
 
-    //비디오 게시판
-    @GetMapping("/video_board")
-    public String video_board() {
-        return "soriel_Video_board";
-    }
-
 }
