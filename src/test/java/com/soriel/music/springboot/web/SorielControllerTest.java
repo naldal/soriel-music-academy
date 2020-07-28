@@ -35,7 +35,7 @@ public class SorielControllerTest {
 
     @Test
     public void vidbrdView() throws Exception {
-        mockMvc.perform(get("/video_board")
+        mockMvc.perform(get("/video_board/1")
                 .content("application/json"))
                 .andExpect(status().isOk());
     }

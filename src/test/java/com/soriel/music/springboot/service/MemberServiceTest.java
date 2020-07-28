@@ -46,7 +46,7 @@ public class MemberServiceTest {
         assertThat(postsService.getPost(postsDto.getId())).isNotNull();
     }
 
-    @Test
+    /*@Test
     public void post_업데이트() {
         //given
         String expected_title = "update_title";
@@ -64,5 +64,5 @@ public class MemberServiceTest {
         //then
         assertThat(postsDto.getTitle()).isEqualTo(expected_title);
         assertThat(postsDto.getContent()).isEqualTo(expected_content);
-    }
+    }*/
 }
