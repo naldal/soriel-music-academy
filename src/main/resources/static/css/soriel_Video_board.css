@@ -21,3 +21,11 @@
 .card-body p {
     font-family: "Gugi", cursive;
 }
+
+#youtubePlayer {
+    position: relative;
+    width: 100% !important;
+}
+
+#youtubePlayer iframe {
+}

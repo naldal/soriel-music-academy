@@ -33,11 +33,11 @@ public class VideoController {
     public String get_link(@PathVariable("id") Long id) {
         Students students = studentsService.findOneById(id);
         String temp = students.getYoutube_link();
-        System.out.println("temp :"+temp);
 
         int start = temp.indexOf("?v=");
         int end = temp.lastIndexOf("&");
-        String ajaxReturn = temp.substring(start+3, end);
+
+        String ajaxReturn = end <= 0 ? temp.substring(start+3) : temp.substring(start+3, end);
 
         System.out.println("ajax return:"+ajaxReturn);
         return ajaxReturn;

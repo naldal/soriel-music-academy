@@ -44,8 +44,7 @@
                 </div>
                 <div class="col">
                     <div th:if="${link!=null}" class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" th:src="@{http://www.youtube.com/embed/{link}}" allowfullscreen></iframe>
-
+                        <iframe class="embed-responsive-item" th:src="@{http://www.youtube.com/embed/{link} (link = ${link})}" allowfullscreen></iframe>
                     </div>
                 </div>
         </div>
