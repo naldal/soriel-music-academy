@@ -15,6 +15,20 @@ script: "./gradlew clean build"
 
 before_install:
   - chmod +x gradlew
+  - zip -r soriel-project-ziped *
+  - mkdir -p deploy
+  - mv soriel-project-zipped.zip deploy/soriel-project-zipped.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: soriel-project-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
 
 notifications:
   email:
