@@ -19,6 +19,14 @@ before_install:
   - mkdir -p deploy
   - mv soriel-project-zipped.zip deploy/soriel-project-zipped.zip
 
+before_deploy:
+  - mkdir -p before-deploy/
+  - cp scripts/*.sh before-deploy/
+  - cp build/libs/*.jar before-deploy/
+  - cd before-deploy && zip -r before-deploy *
+  - cd ../ && mkdir -p deploy
+  - mv before-deploy/before-deploy.zip deploy/soriel-music-academy.zip
+
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
