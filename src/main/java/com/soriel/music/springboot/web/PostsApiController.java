@@ -119,7 +119,7 @@ public class PostsApiController {
     @ResponseBody
     public Boolean reply_function(@PathVariable("post_id") Long post_id, @RequestBody ReplyDto replyDto) {
         replyDto.setReply_writer("administrator");
-        return postsService.save_reply(replyDto)>=0L;
+        return postsService.save_reply(post_id, replyDto)>=0L;
     }
 
     //답장 삭제 기능

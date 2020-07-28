@@ -53,4 +53,12 @@ public class PostsEntity extends BaseTimeEntity {
         this.title = title;
         this.content = content;
     }
+
+    public void doneReply() {
+        this.verify_reply = "답변 완료";
+    }
+
+    public void undoReply() {
+        this.verify_reply = "";
+    }
 }

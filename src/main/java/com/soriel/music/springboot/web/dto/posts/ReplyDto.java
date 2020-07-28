@@ -1,5 +1,6 @@
 package com.soriel.music.springboot.web.dto.posts;
 
+import com.soriel.music.springboot.domain.posts.PostsEntity;
 import com.soriel.music.springboot.domain.posts.ReplyEntity;
 import lombok.*;
 
