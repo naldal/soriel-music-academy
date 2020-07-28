@@ -1,0 +1,7 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/app/project2/zip/
+    overwrite: yes
+
