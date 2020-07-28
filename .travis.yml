@@ -15,7 +15,7 @@ script: "./gradlew clean build"
 
 before_install:
   - chmod +x gradlew
-  - zip -r soriel-project-ziped *
+  - zip -r soriel-project-zipped *
   - mkdir -p deploy
   - mv soriel-project-zipped.zip deploy/soriel-project-zipped.zip
 
