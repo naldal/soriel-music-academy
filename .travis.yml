@@ -23,7 +23,7 @@ before_deploy:
   - cp build/libs/*.jar before-deploy/
   - cd before-deploy && zip -r before-deploy *
   - cd ../ && mkdir -p deploy
-  - mv before-deploy/before-deploy.zip deploy/before-deploy.zip
+  - mv before-deploy/before-deploy.zip deploy/soriel-project-zipped.zip
 
 deploy:
   - provider: s3
