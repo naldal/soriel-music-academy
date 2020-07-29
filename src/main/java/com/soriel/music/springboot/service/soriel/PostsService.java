@@ -79,7 +79,7 @@ public class PostsService {
     }
 
     public ReplyDto getReply(Long id) {
-        ReplyEntity replyEntity = replyRepository.findById(id).orElseThrow(NullPointerException::new);
+        ReplyEntity replyEntity = replyRepository.findByPostId(id).orElseThrow(NullPointerException::new);
 
         return ReplyDto.builder()
                 .id(replyEntity.getId())
