@@ -60,7 +60,7 @@ $(document).ready(function () {
             dataType: 'json',
             contentType: 'application/json; charset=utf-8'
         }).done(function(data){
-            alert('답글 작성 완료');
+            alert('답글 삭제 완료');
             window.location.href = window.location.href;
         }).fail(function(error){
             alert(JSON.stringify(error));

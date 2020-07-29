@@ -68,9 +68,9 @@
                 </div>
 
                 <div class="text-right">
-                    <input id="reply_deleteBtn" class="btn btn-outline-secondary" type="button" value="삭제" />
-                    <input id="reply_updateBtn" class="btn btn-outline-secondary" type="button" value="수정" />
-                    <input id="do_reply_updateBtn" class="btn btn-outline-secondary" type="button" value="수정하기" />
+                    <input sec:authorize="hasRole('ROLE_ADMIN')" id="reply_deleteBtn" class="btn btn-outline-secondary" type="button" value="삭제" />
+                    <input sec:authorize="hasRole('ROLE_ADMIN')" id="reply_updateBtn" class="btn btn-outline-secondary" type="button" value="수정" />
+                    <input sec:authorize="hasRole('ROLE_ADMIN')" id="do_reply_updateBtn" class="btn btn-outline-secondary" type="button" value="수정하기" />
                 </div>
             </div>
             <!-- reply area -->
