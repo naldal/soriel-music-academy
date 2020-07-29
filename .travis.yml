@@ -15,9 +15,6 @@ script: "./gradlew clean build"
 
 before_install:
   - chmod +x gradlew
-  - zip -r soriel-project-zipped *
-  - mkdir -p deploy
-  - mv soriel-project-zipped.zip deploy/soriel-project-zipped.zip
 
 before_deploy:
   - mkdir -p before-deploy
@@ -26,7 +23,7 @@ before_deploy:
   - cp build/libs/*.jar before-deploy/
   - cd before-deploy && zip -r before-deploy *
   - cd ../ && mkdir -p deploy
-  - mv before-deploy/before-deploy.zip deploy/soriel-project-zipped.zip
+  - mv before-deploy/before-deploy.zip deploy/before-deploy.zip
 
 deploy:
   - provider: s3
