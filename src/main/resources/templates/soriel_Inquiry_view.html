@@ -36,8 +36,8 @@
             </div>
 
             <div class="content shadow-sm p-3 mb-5 bg-white rounded" style="font-size: 24px; margin-top: 30px; margin-bottom: 20px !important;">
-                <p id="content" class="text-break" th:inline="text">
-                    [[${postDto.content}]]
+                <p id="content" class="text-break" th:utext="${#strings.replace( #strings.escapeXml( postDto.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}" th:inline="text">
+                    <!--[[${postDto.content}]]-->
                 </p>
             </div>
 

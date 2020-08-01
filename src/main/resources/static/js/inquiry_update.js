@@ -6,6 +6,7 @@
             writer_id : $("#writer_id").val()
         };
         var id = $("#id").val();
+        alert(data.content);
 
         $.ajax({
             type: 'PUT',
