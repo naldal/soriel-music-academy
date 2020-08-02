@@ -21,7 +21,6 @@ public class MailController {
 
     @PostMapping("/mail")
     public String execMail(MailDto mailDto){
-        System.out.println(mailDto.toString());
         mailService.sendMail(mailDto);
         return "soriel_contact_us";
     }
