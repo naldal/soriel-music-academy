@@ -76,7 +76,6 @@ $(document).ready(function () {
     });
 
     $("#do_reply_updateBtn").click(function() {
-        alert("a1");
         let reply_id = $("#reply_id").val();
 
         var data = {

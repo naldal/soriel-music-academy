@@ -33,7 +33,7 @@
                 <a th:href="@{/video_board/1}" class="p-2 text-muted">Videos</a>
                 <a th:href="@{/inquire_board}" class="p-2 text-muted">Inquire</a>
                 <!--<a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/user/myinfo}" class="p-2 text-muted">My page</a>-->
-                <!--<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}" class="p-2 text-muted">Admin</a>-->
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}" class="p-2 text-muted">Admin</a>
             </nav>
         </div>
     </div>

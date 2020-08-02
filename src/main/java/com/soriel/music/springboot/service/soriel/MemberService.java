@@ -54,4 +54,17 @@ public class MemberService implements UserDetailsService {
 
         return integrationEntity != null ? integrationEntity.getId() : null;
     }
+
+    public boolean verifyId(String name) {
+        Optional<IntegrationEntity> integrationEntityOptional = integrationRepository.findByName(name);
+        try{
+            IntegrationEntity integrationEntity = integrationEntityOptional.get();
+            if(integrationEntity != null) {
+                return false;
+            }
+        } catch (NoSuchElementException nse) {
+            return true;
+        }
+        return false;
+    }
 }

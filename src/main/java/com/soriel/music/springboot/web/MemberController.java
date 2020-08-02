@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
 import java.util.Map;
@@ -36,6 +38,16 @@ public class MemberController {
 
         memberService.joinUser(memberDto);
         return "redirect:/user/login_page";
+    }
+
+    //아이디 중복체크
+    @GetMapping("/verify_id/{name}")
+    @ResponseBody
+    public boolean verify_id(@PathVariable("name") String name) {
+        System.out.println("name :::"+name);
+        boolean flag = memberService.verifyId(name);
+        System.out.println("flag ::::"+flag);
+        return flag;
     }
 
     // 접근 거부 페이지
