@@ -15,7 +15,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class SorielControllerTest {
-/*
     @Autowired
     MockMvc mockMvc;
 
@@ -38,5 +37,5 @@ public class SorielControllerTest {
         mockMvc.perform(get("/video_board/1")
                 .content("application/json"))
                 .andExpect(status().isOk());
-    }*/
+    }
 }

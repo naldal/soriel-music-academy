@@ -41,6 +41,6 @@ dependencies {
     compile('org.springframework.session:spring-session-jdbc')
     compile('org.mariadb.jdbc:mariadb-java-client')
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
-    compile('org.springframework.boot:spring-boot-devtools')
     implementation 'org.springframework.boot:spring-boot-starter-mail'
+
 }
