@@ -12,6 +12,11 @@ public class SorielController {
         return "soriel_Main_page";
     }
 
+    @GetMapping("/contact")
+    public String dis_contact() {
+        return "soriel_contact_us";
+    }
+
     //사진 게시판
     @GetMapping("/picture_board")
     public String picture_board() {

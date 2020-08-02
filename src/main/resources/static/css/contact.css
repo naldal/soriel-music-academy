@@ -1,0 +1,58 @@
+div#map div div div div {
+    width: 132px !important;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    border-radius: 6px;
+}
+
+#footer {
+    margin-top: 100px !important;
+}
+
+.row{
+    margin-top: 80px;
+}
+
+.col-sm-4 {
+    margin-left:10px;
+    height:570px;
+    background-image: url("/static/images/contact_image.jpg");
+    background-repeat:no-repeat;
+    background-size: 100%;
+}
+
+.col {
+    padding: 52px;
+}
+
+.col p {
+    text-align: center;
+    font-family: "Roboto Slab", serif;
+    font-size: 30px;
+}
+
+#contactBtn {
+    width: 100%;
+}
+
+.pphone{
+    color: #ffffff;
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    top:40%;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.pemail{
+    color: #ffffff;
+    position: absolute;
+    width: 287px;
+    left: 50%;
+    transform: translateX(-50%);
+    top:50%;
+    font-size: 25px;
+    font-weight: bolder;
+}

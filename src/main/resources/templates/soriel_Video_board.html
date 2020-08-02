@@ -46,6 +46,9 @@
                     <div th:if="${link!=null}" class="embed-responsive embed-responsive-16by9">
                         <iframe class="embed-responsive-item" th:src="@{http://www.youtube.com/embed/{link} (link = ${link})}" allowfullscreen></iframe>
                     </div>
+                    <div th:if="${link==null}" class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" th:src="@{http://www.youtube.com/embed/v=As_4JTmHuW4}" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         <!-- container -->

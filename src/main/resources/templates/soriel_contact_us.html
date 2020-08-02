@@ -1,0 +1,80 @@
+<html xmlns:th="http://www.thymleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="ko">
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inquiry View</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+    <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/static/css/soriel_Header.css}" />
+    <link rel="stylesheet" th:href="@{/static/css/contact.css}" />
+</head>
+<body>
+    <div class="container">
+        <th:block th:replace="fragment/soriel_Header :: headerFragment"></th:block>
+        <div id="map" style="height:400px; margin-top:50px">
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <p class="pphone"><i class="fas fa-phone-square-alt"></i>&nbsp;&nbsp;031-483-2038</p>
+                <p class="pemail"><i class="fas fa-envelope"></i>&nbsp;&nbsp;cec7777@naver.com</p>
+            </div>
+            <div class="col" style="height:300px">
+                <p>CONTACT US</p>
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="name" placeholder="이름을 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="message" rows="9"></textarea>
+                    </div>
+                </form>
+                <a href="#" class="btn btn-primary btn-lg disabled" id="contactBtn" role="button">Send</a>
+            </div>
+        </div>
+    </div>
+    <th:block th:replace="fragment/soriel_Footer :: footerFragment"></th:block>
+</body>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=22539b4c568ea71f7ca39e70a1802eef&libraries=services,clusterer,drawing"></script>
+<script>
+    var container = document.getElementById('map');
+    var options = {
+        center: new kakao.maps.LatLng(37.306714, 126.815125),
+        level: 3
+    };
+
+    var map = new kakao.maps.Map(container, options);
+
+
+    var markerPosition  = new kakao.maps.LatLng(37.306714, 126.815125);
+
+    var marker = new kakao.maps.Marker({
+        position: markerPosition
+    });
+
+    marker.setMap(map);
+
+    var iwContent = '<div style="padding:5px; text-align:center">소리엘 음악학원<br><a href="https://map.kakao.com/link/map/소리엘 음악학원,37.306714, 126.815125" style="color:blue; font-size:4px" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/소리엘 음악학원,37.306714, 126.815125" style="color:blue; font-size:4px"" target="_blank">길찾기</a></div>',
+    iwPosition = new kakao.maps.LatLng(37.306714, 126.815125); //인포윈도우 표시 위치입니다
+
+    var infowindow = new kakao.maps.InfoWindow({
+        position : iwPosition,
+        content : iwContent
+    });
+
+    infowindow.open(map, marker);
+</script>
+</html>
