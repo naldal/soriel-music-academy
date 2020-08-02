@@ -44,9 +44,7 @@ public class MemberController {
     @GetMapping("/verify_id/{name}")
     @ResponseBody
     public boolean verify_id(@PathVariable("name") String name) {
-        System.out.println("name :::"+name);
         boolean flag = memberService.verifyId(name);
-        System.out.println("flag ::::"+flag);
         return flag;
     }
 
