@@ -19,7 +19,7 @@ public class SorielControllerTest {
     @Autowired
     MockMvc mockMvc;
 
-    @Test
+    /*@Test
     public void mainView() throws Exception {
         mockMvc.perform(get("/")
                 .contentType("application/json"))
@@ -38,5 +38,5 @@ public class SorielControllerTest {
         mockMvc.perform(get("/video_board/1")
                 .content("application/json"))
                 .andExpect(status().isOk());
-    }
+    }*/
 }
