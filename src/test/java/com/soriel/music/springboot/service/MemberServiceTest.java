@@ -18,6 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MemberServiceTest {
+/*
 
     @Autowired
     PostsService postsService;
@@ -45,6 +46,7 @@ public class MemberServiceTest {
     public void post_조회() {
         assertThat(postsService.getPost(postsDto.getId())).isNotNull();
     }
+*/
 
     /*@Test
     public void post_업데이트() {
