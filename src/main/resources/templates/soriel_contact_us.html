@@ -31,18 +31,18 @@
             </div>
             <div class="col" style="height:300px">
                 <p>CONTACT US</p>
-                <form>
+                <form th:action="@{/mail}" method="POST">
                     <div class="form-group">
-                        <input type="email" class="form-control" id="name" placeholder="이름을 입력하세요">
+                        <input class="form-control" name="title" id="title" placeholder="제목을 입력하세요">
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="이메일을 입력하세요">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" id="message" rows="9"></textarea>
+                        <textarea class="form-control" name="message" id="message" rows="9"></textarea>
                     </div>
+                    <input type="submit" class="btn btn-primary btn-lg" id="contactBtn" value="SEND">
                 </form>
-                <a href="#" class="btn btn-primary btn-lg disabled" id="contactBtn" role="button">Send</a>
             </div>
         </div>
     </div>

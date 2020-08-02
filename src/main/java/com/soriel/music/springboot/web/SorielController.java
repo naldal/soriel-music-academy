@@ -1,7 +1,9 @@
 package com.soriel.music.springboot.web;
 
+import com.soriel.music.springboot.web.dto.mail.MailDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class SorielController {
@@ -10,11 +12,6 @@ public class SorielController {
     @GetMapping("/")
     public String mainPage() {
         return "soriel_Main_page";
-    }
-
-    @GetMapping("/contact")
-    public String dis_contact() {
-        return "soriel_contact_us";
     }
 
     //사진 게시판

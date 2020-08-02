@@ -2,6 +2,7 @@
 /.gradle/
 .idea
 application-oauth.properties
+application-mail.properties
 # Project exclude paths
 /build/
 /out/
