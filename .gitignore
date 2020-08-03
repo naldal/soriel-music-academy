@@ -3,6 +3,7 @@
 .idea
 application-oauth.properties
 application-mail.properties
+application-gallery.yml
 # Project exclude paths
 /build/
 /out/
