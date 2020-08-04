@@ -42,5 +42,7 @@ dependencies {
     compile('org.mariadb.jdbc:mariadb-java-client')
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
-    compile('org.springframework.cloud:spring-cloud-starter-aws:2.2.1.RELEASE') // aws s3 연동S
+// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-aws
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.3.RELEASE'
+
 }
