@@ -42,6 +42,5 @@ dependencies {
     compile('org.mariadb.jdbc:mariadb-java-client')
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
-    implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.700')
-    implementation 'com.amazonaws:aws-java-sdk-s3'
+    compile('org.springframework.cloud:spring-cloud-starter-aws:2.2.1.RELEASE') // aws s3 연동S
 }

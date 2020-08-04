@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -16,7 +18,6 @@ import java.io.IOException;
 public class GalleryController {
 
     private S3Service s3Service;
-    private GalleryService galleryService;
 
     @GetMapping("/gallery")
     public String dispGal() {
@@ -24,11 +25,8 @@ public class GalleryController {
     }
 
     @PostMapping("/gallery")
-    public String execGal(GalleryDto galleryDto, MultipartFile file) throws IOException {
-        String imgPath = s3Service.upload(file);
-        galleryDto.setFilePath(imgPath);
-
-        galleryService.savePath(galleryDto);
-        return "redirect:/gallery";
+    @ResponseBody
+    public String upload(@RequestParam("data") MultipartFile multipartFile) throws IOException {
+        return s3Service.upload(multipartFile, "static");
     }
 }
