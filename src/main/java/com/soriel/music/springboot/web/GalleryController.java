@@ -1,8 +1,6 @@
 package com.soriel.music.springboot.web;
 
-import com.soriel.music.springboot.service.soriel.GalleryService;
 import com.soriel.music.springboot.service.soriel.S3Service;
-import com.soriel.music.springboot.web.dto.gallery.GalleryDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +25,7 @@ public class GalleryController {
     @PostMapping("/gallery")
     @ResponseBody
     public String upload(@RequestParam("data") MultipartFile multipartFile) throws IOException {
+        System.out.println(multipartFile.toString()+":::::");
         return s3Service.upload(multipartFile, "static");
     }
 }
