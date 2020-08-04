@@ -43,5 +43,7 @@ dependencies {
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.3.RELEASE'
-
+    compile('commons-beanutils:commons-beanutils:1.9.3') {
+        exclude group: 'commons-logging', module: 'commons-logging'
+    }
 }
