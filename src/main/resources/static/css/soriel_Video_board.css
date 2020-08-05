@@ -27,5 +27,6 @@
     width: 100% !important;
 }
 
-#youtubePlayer iframe {
+.clickhere {
+    cursor: pointer;
 }

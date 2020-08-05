@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+
     $(".clickhere").click(function() {
         var id = $(this).children('.student_id').val();
 
