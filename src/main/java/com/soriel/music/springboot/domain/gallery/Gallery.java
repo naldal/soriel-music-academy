@@ -1,5 +1,6 @@
 package com.soriel.music.springboot.domain.gallery;
 
+import com.soriel.music.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Gallery {
+public class Gallery extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

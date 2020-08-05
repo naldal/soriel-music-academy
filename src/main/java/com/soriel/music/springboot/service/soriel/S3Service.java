@@ -3,6 +3,9 @@ package com.soriel.music.springboot.service.soriel;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.soriel.music.springboot.domain.gallery.Gallery;
+import com.soriel.music.springboot.domain.gallery.GalleryRepository;
+import com.soriel.music.springboot.web.dto.gallery.GalleryDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -18,6 +21,7 @@ import java.util.Optional;
 public class S3Service {
 
     private final AmazonS3Client amazonS3Client;
+    private final GalleryRepository galleryRepository;
 
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
@@ -38,6 +42,9 @@ public class S3Service {
 
     private String putS3(File uploadFile, String fileName) {
         amazonS3Client.putObject(new PutObjectRequest(bucket, fileName, uploadFile).withCannedAcl(CannedAccessControlList.PublicRead));
+        GalleryDto galleryDto = GalleryDto.builder().url(amazonS3Client.getUrl(bucket,fileName).toString()).build();
+        Gallery gallery = galleryDto.toEntity();
+        galleryRepository.save(gallery);
         return amazonS3Client.getUrl(bucket, fileName).toString();
     }
 
