@@ -42,7 +42,7 @@
             </div>
 
             <div class="text-right">
-                <input id="deleteBtn" class="btn btn-outline-secondary" type="button" value="삭제" th:if="${#authentication.principal.id == postDto.writer_id}"/>
+                <input id="deleteBtn" class="btn btn-outline-secondary" type="button" value="삭제" th:if="${#authentication.principal.id == postDto.writer_id or #authentication.principal.customName == 'admin'}"/>
                 <input th:onclick="|window.location.href='/post/update/${postDto.id}'|" id="updateBtnf" class="btn btn-outline-secondary" type="button" value="수정" th:if="${#authentication.principal.id == postDto.writer_id}" />
                 <input sec:authorize="hasRole('ROLE_ADMIN')" id="replyBtn" class="btn btn-outline-secondary" type="button" value="답글" th:if="${replyDto == null}"/>
             </div>
