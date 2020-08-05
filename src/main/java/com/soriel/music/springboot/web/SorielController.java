@@ -14,10 +14,4 @@ public class SorielController {
         return "soriel_Main_page";
     }
 
-    //사진 게시판
-    @GetMapping("/picture_board")
-    public String picture_board() {
-        return "soriel_Picture_board";
-    }
-
 }
