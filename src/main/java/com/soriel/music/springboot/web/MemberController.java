@@ -48,22 +48,10 @@ public class MemberController {
         return flag;
     }
 
-    // 접근 거부 페이지
-    @GetMapping("/user/denied")
-    public String dispDenied() {
-        return "/denied";
-    }
-
-    // 내 정보 페이지
-    @GetMapping("/user/info")
-    public String dispMyInfo() {
-        return "/myinfo";
-    }
-
     // 어드민 페이지
     @GetMapping("/admin")
     public String dispAdmin() {
-        return "/admin";
+        return "admin";
     }
 
 }
