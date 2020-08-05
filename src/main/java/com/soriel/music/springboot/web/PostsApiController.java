@@ -33,12 +33,15 @@ public class PostsApiController {
         authentication = SecurityContextHolder.getContext().getAuthentication();
 
         Long writerId = memberService.getMemberInfo(authentication.getName());
+        if (writerId != null) {
+            postsDto.setWriter_id(writerId);
+            postsDto.setWriter(authentication.getName());
+            postsService.savePosts(postsDto);
 
-        postsDto.setWriter_id(writerId);
-        postsDto.setWriter(authentication.getName());
-        postsService.savePosts(postsDto);
-
-        return "redirect:/inquire_board";
+            return "redirect:/inquire_board";
+        } else {
+            return "redirect:/error";
+        }
     }
 
     //게시판 리스트 이동

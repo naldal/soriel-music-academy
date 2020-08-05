@@ -26,6 +26,7 @@ public class PostsService {
     private final ReplyRepository replyRepository;
 
     public Long savePosts(PostsDto postsDto) {
+
         return postsRepository.save(postsDto.toEntity()).getId();
     }
 
