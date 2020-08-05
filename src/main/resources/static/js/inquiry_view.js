@@ -29,9 +29,7 @@ $(document).ready(function () {
 
 
     $("#reply_submit").click(function(){
-
         let post_id = $("#id").val();
-
         var data = {
             reply_content: $("#send_reply").val(),
             post_id: $("#id").val()

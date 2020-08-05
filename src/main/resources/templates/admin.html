@@ -2,10 +2,39 @@
 <html xmlns:th="http://www.thymleaf.org" lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>admin</title>
+    <title>관리자 페이지입니다.</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+    <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/static/css/soriel_Header.css}" />
+    <link rel="stylesheet" th:href="@{/static/css/admin.css}" />
+    <script th:src="@{/static/js/admin.js}"></script>
 </head>
 <body>
-    <h1>Admin 페이지입니다.</h1>
-    <hr>
+    <div class="container">
+        <th:block th:replace="fragment/soriel_Header :: headerFragment"></th:block>
+        <div class="row justify-content-around">
+            <div class="col-2"></div>
+            <div class="col-3">
+                <button onclick="location.href='/admin/manageStudent'" id="go_manageStudent"><img id="stdpng" th:src="@{/static/images/stud.png}">학생관리</button>
+            </div>
+            <div class="col-3">
+                <button onclick="location.href='/admin/gallery'" id="go_uploadImage"><img id="picpng" th:src="@{/static/images/pict.png}">사진올리기</button>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
 </body>
+<script>
+
+</script>
 </html>

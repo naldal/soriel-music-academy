@@ -38,8 +38,9 @@ div#map div div div div {
 .pphone{
     color: #ffffff;
     position: absolute;
-    width: 200px;
+    width: 100%;
     left: 50%;
+    text-align: center;
     transform: translateX(-50%);
     top:40%;
     font-size: 25px;

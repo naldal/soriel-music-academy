@@ -17,12 +17,12 @@ public class GalleryController {
 
     private S3Service s3Service;
 
-    @GetMapping("/gallery")
+    @GetMapping("/admin/gallery")
     public String dispGal() {
         return "gallery";
     }
 
-    @PostMapping("/gallery")
+    @PostMapping("/admin/gallery")
     @ResponseBody
     public String upload(@RequestParam("data") MultipartFile multipartFile) throws IOException {
         return s3Service.upload(multipartFile, "static");
