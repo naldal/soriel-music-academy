@@ -21,10 +21,10 @@ public class MailService {
     public void sendMail(MailDto mailDto) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
-        simpleMailMessage.setTo(mailDto.getEmail());
+        simpleMailMessage.setTo("cec7777@naver.com");
         simpleMailMessage.setFrom(MailService.FROM_ADDRESS);
         simpleMailMessage.setSubject(mailDto.getTitle());
-        simpleMailMessage.setText(mailDto.getMessage());
+        simpleMailMessage.setText("please reply to this email : "+mailDto.getEmail()+"\n"+mailDto.getMessage());
 
         mailSender.send(simpleMailMessage);
     }

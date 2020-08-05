@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.mail.internet.AddressException;
+
 @Controller
 @AllArgsConstructor
 public class MailController {
@@ -20,7 +22,7 @@ public class MailController {
     }
 
     @PostMapping("/mail")
-    public String execMail(MailDto mailDto){
+    public String execMail(MailDto mailDto) throws AddressException {
         mailService.sendMail(mailDto);
         return "soriel_contact_us";
     }
