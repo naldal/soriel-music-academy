@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.util.Optional;
 
 @RequiredArgsConstructor
-@PropertySource("classpath:application-gallery.yml")
 @Service
 public class S3Service {
 
