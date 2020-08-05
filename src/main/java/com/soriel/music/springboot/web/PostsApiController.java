@@ -1,5 +1,6 @@
 package com.soriel.music.springboot.web;
 
+import com.soriel.music.springboot.domain.Role;
 import com.soriel.music.springboot.domain.posts.PostsEntity;
 import com.soriel.music.springboot.service.soriel.MemberService;
 import com.soriel.music.springboot.service.soriel.PostsService;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -100,17 +102,19 @@ public class PostsApiController {
     //게시글 삭제처리
     @DeleteMapping("/post/delete/{id}")
     @ResponseBody
-    public Boolean delete(@PathVariable("id") Long id){
+    public Boolean delete(@PathVariable("id") Long id) {
         authentication = SecurityContextHolder.getContext().getAuthentication();
-
+        System.out.println("getname:::"+authentication.getName());
         PostsDto postsDto = postsService.getPost(id);
 
         //현재 로그인 한 id
         Long current_id = memberService.getMemberInfo(authentication.getName());
-        if(!postsDto.getWriter_id().equals(current_id)) {
+        if(postsDto.getWriter_id().equals(current_id) || authentication.getName().equals("admin")){
+            postsService.delete(id);
+        } else if(!postsDto.getWriter_id().equals(current_id)) {
             return false;
         }
-        postsService.delete(id);
+
         return true;
     }
 
