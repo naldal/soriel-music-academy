@@ -28,7 +28,7 @@ $(document).ready(function(){
     $("#name").focusout(function(){
         if($("#name").val()!='') {
             $("#name").animate({
-                'backgroundColor': 'rgba(129, 236, 236, 0.1)'
+                'backgroundColor': 'rgb(231, 240, 255)'
             }, 1000);
         }
 
@@ -49,7 +49,7 @@ $(document).ready(function(){
                 });
             } else {
                 $("#name").animate({
-                    'backgroundColor': 'rgba(129, 236, 236, 0.1)'
+                    'backgroundColor': 'rgb(231, 240, 255)'
                 }, 1000);
             }
         }).fail(function(error){
@@ -62,20 +62,15 @@ $(document).ready(function(){
     $("#email").focusout(function(){
         if($("#email").val()!='') {
             $("#email").animate({
-                'backgroundColor': 'rgba(129, 236, 236, 0.1)'
+                'backgroundColor': 'rgb(231, 240, 255)'
             }, 1000);
         }
     });
 
     $("#pass").focusout(function(){
-        if($("#pass").val() != $("#re_pass").val()){
-            $("#re_pass").attr('placeholder', '비밀번호가 일치하지 않습니다');
-            $("#pass    ").animate({
-                'backgroundColor': 'rgba(225, 112, 85, 0.2)'
-            }, 1000);
-        } else if($("#pass").val()!='') {
+        if($("#pass").val()!='') {
             $("#pass").animate({
-                'backgroundColor': 'rgba(129, 236, 236, 0.1)'
+                'backgroundColor': 'rgb(231, 240, 255)'
             }, 1000);
         }
 
@@ -89,7 +84,7 @@ $(document).ready(function(){
             }, 1000);
         } else if($("#re_pass").val()!='') {
           $("#re_pass").animate({
-              'backgroundColor': 'rgba(129, 236, 236, 0.1)'
+              'backgroundColor': 'rgb(231, 240, 255)'
           }, 1000);
         }
     });
