@@ -11,11 +11,6 @@ public class AdminController {
         return "admin";
     }
 
-    @GetMapping("/admin/gallery")
-    public String dis_gall(){
-        return "gallery";
-    }
-
     @GetMapping("/admin/manageStudent")
     public String dis_manage(){
         return "soriel_Manage_student";
