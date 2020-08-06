@@ -52,7 +52,7 @@
         }).done(function (data) {
             $('#result-image').attr("src", data);
         }).fail(function (error) {
-            alert(JSON.stringify(error));
+            alert('이미지 용량이 너무 큽니다');
         })
     }
 </script>

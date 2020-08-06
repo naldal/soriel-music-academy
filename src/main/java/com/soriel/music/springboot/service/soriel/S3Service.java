@@ -34,7 +34,8 @@ public class S3Service {
         return upload(uploadFile, dirName);
     }
 
-    private String upload(File uploadFile, String dirName) {
+    private String upload(File uploadFile, String dirName) throws IOException {
+
         String fileName = dirName + "/" + uploadFile.getName();
         String uploadImageUrl = putS3(uploadFile, fileName);
         removeNewFile(uploadFile);
