@@ -11,7 +11,7 @@ $(document).ready(function() {
         }).done(function(ajaxReturnString) {
             window.location.href = '/video_board/'+id+'?link='+ajaxReturnString
         }).fail(function(error){
-            alert(JSON.stringify(error));
+            alert('아직 영상이 없습니다');
         });
     });
 
