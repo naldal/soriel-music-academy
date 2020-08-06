@@ -16,9 +16,10 @@
 <h1>
     S3 이미지 업로더
 </h1>
+<a href="/">홈으로</a>
 <div class="col-md-12">
     <div class="col-md-2">
-        <form>
+        <form id="file-form">
             <div class="form-group">
                 <label for="img">파일 업로드</label>
                 <input type="file" id="img">
@@ -37,9 +38,9 @@
     $('#btn-save').on('click', uploadImage);
 
     function uploadImage() {
-        var file = $('#img')[0].files[0];
-        var formData = new FormData();
-        formData.append('data', file);
+        var form = $("#file-form")[0];
+        var formData = new FormData(form);
+        formData.append('data', $('#img')[0].files[0]);
 
         $.ajax({
             type: 'POST',

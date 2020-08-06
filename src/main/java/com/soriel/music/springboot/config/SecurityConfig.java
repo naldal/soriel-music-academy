@@ -52,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .csrf()
                     .ignoringAntMatchers("/h2-console/**")
                     .ignoringAntMatchers("/post/**")
-                    .ignoringAntMatchers("/gallery")
+                    .ignoringAntMatchers("/admin/**")
                     .ignoringAntMatchers("/video_board/**")
                 .and()
                     .logout()

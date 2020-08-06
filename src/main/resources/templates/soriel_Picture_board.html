@@ -30,9 +30,14 @@
             </div>
             <!-- Picture Text 1 -->
 
-            <div th:each="picture : ${picture_list}" class="row" id="picRow">
-                <div class="col">
-                    <img data-aos="fade-up" data-aos-duration="2000" data-aos-anchor-placement="top-center" th:src="${picture.url}" alt="" />
+            <div class="row" id="picRow">
+                <div th:each="picture, i : ${picture_list}">
+                    <div class="col">
+                        <img data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="top-center" th:src="${picture.url}" alt="" />
+                    </div>
+                    <div th:if="${i.count%3==0}">
+                        <div style="margin-top: 10px;" class="w-100"></div>
+                    </div>
                 </div>
             </div>
         </div>
