@@ -15,12 +15,12 @@ $(document).ready(function() {
         });
     });
 
-    $(".card-body").mouseover(function(){
-        $("#myself").css('background-color','#eeeeee');
+    $(".self").mouseover(function(){
+        $(".self").children().css('background-color','#eeeeee');
     });
 
-    $(".card-body").mouseleave(function(){
-        this.children().css('background-color','#ffffff');
+    $(".self").mouseleave(function(){
+        $(".self").children().css('background-color','#ffffff');
     });
 
 
