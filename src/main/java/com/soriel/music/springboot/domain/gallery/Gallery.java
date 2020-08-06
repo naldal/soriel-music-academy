@@ -23,7 +23,8 @@ public class Gallery extends BaseTimeEntity {
 
     @Builder
     public Gallery(Long id, String url) {
-        this.id = id;
-        this.url = url;
+        this.id=id;
+        this.url=url;
     }
+
 }
