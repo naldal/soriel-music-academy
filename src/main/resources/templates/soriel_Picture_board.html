@@ -36,7 +36,9 @@
                         <img data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="top-center" th:src="${picture.url}" alt="" />
                     </div>
                     <div th:if="${i.count%3==0}">
-                        <div class="w-100"></div>
+                        <div th:unless="${i.count > 3 and (i.count-4)%3==0}">
+                            <div class="w-100"></div>
+                        </div>
                     </div>
                 </div>
             </div>
