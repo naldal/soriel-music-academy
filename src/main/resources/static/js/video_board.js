@@ -14,4 +14,8 @@ $(document).ready(function() {
             alert(JSON.stringify(error));
         });
     });
+
+    $(".card-body").hover(function(){
+        $(".card-body").css('background-color','#dddddd');
+    });
 });
