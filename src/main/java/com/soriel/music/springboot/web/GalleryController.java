@@ -37,7 +37,6 @@ public class GalleryController {
     @PostMapping("/admin/gallery")
     @ResponseBody
     public String upload(@RequestParam("data") MultipartFile multipartFile) throws IOException {
-        System.out.println("111:"+multipartFile.toString());
         return s3Service.upload(multipartFile, "static");
     }
 }
