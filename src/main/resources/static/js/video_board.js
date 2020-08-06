@@ -15,7 +15,13 @@ $(document).ready(function() {
         });
     });
 
-    $(".card-body").hover(function(){
-        $("#myself").css('background-color','#dddddd');
+    $(".card-body").mouseover(function(){
+        $("#myself").css('background-color','#eeeeee');
     });
+
+    $(".card-body").mouseleave(function(){
+        $("#myself").css('background-color','#ffffff');
+    });
+
+
 });
