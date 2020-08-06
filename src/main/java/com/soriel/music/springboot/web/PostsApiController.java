@@ -33,14 +33,14 @@ public class PostsApiController {
         authentication = SecurityContextHolder.getContext().getAuthentication();
 
         Long writerId = memberService.getMemberInfo(authentication.getName());
-        if (writerId != null) {
+        if(postsDto.getTitle()==null || postsDto.getContent()==null || postsDto.getId()==null || postsDto.getWriter_id()==null || !postsDto.getCategory().equals("입학상담") || !postsDto.getCategory().equals("교재구입/대") || !postsDto.getCategory().equals("차량운") || !postsDto.getCategory().equals("기타")) {
+            return "redirect:/error";
+        } else {
             postsDto.setWriter_id(writerId);
             postsDto.setWriter(authentication.getName());
             postsService.savePosts(postsDto);
 
             return "redirect:/inquire_board";
-        } else {
-            return "redirect:/error";
         }
     }
 
