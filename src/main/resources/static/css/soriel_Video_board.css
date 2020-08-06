@@ -34,10 +34,17 @@
     transition: all 0.1s;
 }
 
+.card-body:first-child {
+    margin-top: 10px;
+}
+
 .card-body:hover {
     background-color: #dff9fb;
+    border: 0px;
     transform: scale(1.04);
 }
+
 #imgReady {
     width: 100%;
 }
+
