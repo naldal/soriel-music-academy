@@ -6,6 +6,7 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.soriel.music.springboot.domain.gallery.Gallery;
 import com.soriel.music.springboot.domain.gallery.GalleryRepository;
 import com.soriel.music.springboot.web.dto.gallery.GalleryDto;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -66,6 +67,10 @@ public class S3Service {
         }
 
         return Optional.empty();
+    }
+
+    public List<Gallery> getPictures() {
+        return (List<Gallery>) galleryRepository.findAll();
     }
 }
 

@@ -43,7 +43,7 @@
 
         $.ajax({
             type: 'POST',
-            url: '/gallery',
+            url: '/admin/gallery',
             data: formData,
             encType: 'multipart-form-data',
             processData: false,
@@ -51,7 +51,7 @@
         }).done(function (data) {
             $('#result-image').attr("src", data);
         }).fail(function (error) {
-            alert(error);
+            alert(JSON.stringify(error));
         })
     }
 </script>

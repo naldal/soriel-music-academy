@@ -30,45 +30,9 @@
             </div>
             <!-- Picture Text 1 -->
 
-            <div class="row" id="picRow">
+            <div th:each="picture : ${picture_list}" class="row" id="picRow">
                 <div class="col">
-                    <img src="../static/images/gr1.jpg" alt="" />
-                </div>
-                <div class="col">
-                    <img src="../static/images/gr2.jpg" alt="" />
-                </div>
-                <div class="col">
-                    <img src="../static/images/gr3.jpg" alt="" />
-                </div>
-                <div style="margin-top: 10px;" class="w-100"></div>
-                <div class="col">
-                    <img data-aos="fade-up" src="../static/images/gr4.jpg" alt="" />
-                </div>
-                <div class="col">
-                    <img data-aos="fade-up" src="../static/images/gr5.jpg" alt="" />
-                </div>
-                <div class="col">
-                    <img data-aos="fade-up" src="../static/images/gr6.jpg" alt="" />
-                </div>
-                <div style="margin-top: 10px;" class="w-100"></div>
-                <div class="col">
-                    <img data-aos="fade-up" data-aos-anchor-placement="top-center" src="../static/images/gr7.jpg" alt="" />
-                </div>
-                <div class="col">
-                    <img data-aos="fade-up" data-aos-anchor-placement="top-center" src="../static/images/gr8.png" alt="" />
-                </div>
-                <div class="col">
-                    <img data-aos="fade-up" data-aos-anchor-placement="top-center" src="../static/images/gr9.png" alt="" />
-                </div>
-                <div style="margin-top: 10px;" class="w-100"></div>
-                <div class="col">
-                    <img data-aos="fade-up" data-aos-duration="2000" data-aos-anchor-placement="top-center" src="../static/images/gr10.jpg" alt="" />
-                </div>
-                <div class="col">
-                    <img data-aos="fade-up" data-aos-duration="2000" data-aos-anchor-placement="top-center" src="../static/images/gr1.jpg" alt="" />
-                </div>
-                <div class="col">
-                    <img data-aos="fade-up" data-aos-duration="2000" data-aos-anchor-placement="top-center" src="../static/images/gr2.jpg" alt="" />
+                    <img data-aos="fade-up" data-aos-duration="2000" data-aos-anchor-placement="top-center" th:src="${picture.url}" alt="" />
                 </div>
             </div>
         </div>
