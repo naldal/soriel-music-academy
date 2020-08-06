@@ -28,6 +28,12 @@
     width: 100% !important;
 }
 
-.clickhere {
+.card-body {
     cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+
+.card-body:hover {
+    background-color: #dff9fb;
+    transform: scale(1.1);
 }
