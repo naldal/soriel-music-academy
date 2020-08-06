@@ -37,7 +37,7 @@
                 <div class="col-3 justify-content-center">
                     <div th:each="student : ${students}" class="card text-center">
                         <div class="card-body clickhere" >
-                            <p class="card-text">[[${student.student_name}]]</p>
+                            <p id="myself" class="card-text">[[${student.student_name}]]</p>
                             <input class="student_id" type="hidden" th:value="${student.id}">
                         </div>
                     </div>

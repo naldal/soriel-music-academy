@@ -16,6 +16,6 @@ $(document).ready(function() {
     });
 
     $(".card-body").hover(function(){
-        $(".card-body").css('background-color','#dddddd');
+        $("#myself").css('background-color','#dddddd');
     });
 });
