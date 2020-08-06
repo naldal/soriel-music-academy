@@ -5,6 +5,7 @@
 .col-3 {
     height: 420px;
     overflow: auto;
+    border-right: 1px solid #dddddd;
 }
 
 .container .row div {
