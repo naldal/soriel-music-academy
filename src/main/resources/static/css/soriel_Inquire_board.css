@@ -23,3 +23,7 @@ tr td,
 a.nav-link.active {
     background-color: #6c5ce7 !important;
 }
+
+.w-100 {
+    margin-top: 30px;
+}
