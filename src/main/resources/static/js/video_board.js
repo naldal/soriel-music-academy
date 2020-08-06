@@ -15,13 +15,4 @@ $(document).ready(function() {
         });
     });
 
-    $(".self").mouseover(function(){
-        $(".self").children().css('background-color','#eeeeee');
-    });
-
-    $(".self").mouseleave(function(){
-        $(".self").children().css('background-color','#ffffff');
-    });
-
-
 });
