@@ -31,10 +31,13 @@
 .card-body {
     border: 0.2px solid #dddddd;
     cursor: pointer;
-    transition: all .4s ease-in-out;
+    transition: all 0.1s;
 }
 
 .card-body:hover {
     background-color: #dff9fb;
     transform: scale(1.04);
+}
+#imgReady {
+    width: 100%;
 }
