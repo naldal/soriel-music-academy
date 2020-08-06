@@ -20,7 +20,7 @@ $(document).ready(function() {
     });
 
     $(".card-body").mouseleave(function(){
-        $("#myself").css('background-color','#ffffff');
+        this.children().css('background-color','#ffffff');
     });
 
 
