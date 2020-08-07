@@ -19,6 +19,7 @@
 }
 .card-body {
     border: 1px solid #dddddd;
+    border-radius: 10px;
 }
 
 .card-body p {

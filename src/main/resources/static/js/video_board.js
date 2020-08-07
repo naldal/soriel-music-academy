@@ -12,6 +12,7 @@ $(document).ready(function() {
             window.location.href = '/video_board/'+id+'?link='+ajaxReturnString
         }).fail(function(error){
             alert('아직 영상이 없습니다');
+            window.location.href = '/video_board/'+id;
         });
     });
 
