@@ -14,4 +14,10 @@ public class SorielController {
         return "soriel_Main_page";
     }
 
+    //학원 소개 페이지
+    @GetMapping("/about")
+    public String dis_about() {
+        return "soriel_about_us";
+    }
+
 }

@@ -1,0 +1,113 @@
+@font-face { font-family: 'paybooc-Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'NEXON Lv1 Gothic OTF'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'MapoGoldenPier'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'GmarketSansMedium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: '양진체'; src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'S-CoreDream-3Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'GmarketSansBold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'CookieRun-Regular'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.container {
+    margin-top: 40px;
+}
+
+#aboutContainer .col-4, .col{
+    margin: 0px;
+    padding: 0px;
+    /*border: 1px solid black;*/
+    height:400px;
+}
+
+#aboutContainer .col-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#aboutContainer .col-4 img {
+    max-width: 70%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+#aboutContainer .col {
+  position:relative;
+}
+
+#forC {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#atext {
+    margin-left: 10px;
+    text-align: justify;
+}
+
+#atext h4 {
+    margin-bottom: 10px;
+    font-family: 'paybooc-Bold';
+}
+
+#atext p {
+    margin-right: 10px;
+    line-height: 2.1rem;
+    font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+.abtimg img{
+    max-width: 100%;
+}
+
+#mal {
+    left: 10px;
+}
+
+.con {
+    position: relative;
+    font-size: 50px;
+}
+
+.bottom-left{
+    color: white;
+    position: absolute;
+    bottom: 8px;
+    left: 20px;
+}
+
+.bottom-right {
+    color: white;
+    position: absolute;
+    bottom: 8px;
+    right: 20px;
+}
+
+#piano {
+    font-family: 'MapoGoldenPier';
+}
+
+#harmonica {
+    font-family: 'GmarketSansMedium';
+}
+
+#flute {
+    font-family: 'S-CoreDream-3Light';
+}
+
+#ocarina {
+    font-family: '양진체';
+}
+
+#recorder {
+    font-family: 'GmarketSansBold';
+}
+
+#ukulele {
+    font-family: 'CookieRun-Regular'
+}

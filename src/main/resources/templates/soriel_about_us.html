@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>학원 소개</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+    <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600&display=swap" rel="stylesheet" />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <link rel="stylesheet" th:href="@{/static/css/soriel_Header.css}" />
+    <link rel="stylesheet" th:href="@{/static/css/soriel_about.css}" />
+</head>
+<body>
+    <div class="container">
+        <th:block th:replace="fragment/soriel_Header :: headerFragment"></th:block>
+
+        <div class="container" id="aboutContainer">
+            <div class="row">
+                <div class="col-4">
+                    <img src="../static/images/mozart1.jpg">
+                </div>
+                <div class="col" id="atext">
+                    <div id="forC">
+                    <h4>최고의 교육을 지향합니다</h4>
+                        <p>소리엘 음악학원은 학생들에게는 자신의 음악적 이상을 완성할 수 있도록 하며, 학부모님들의 기대를 충족시킬 수 있는 최고 수준의 지도로 기존의 음악학원과는 차별화된 교육방식을 지양하는 전문 음악교육기관입니다. 음악적 감각, 감성, 기억력, 창의성, 인간성 등을 개발시키고, 이를 통해 자아실현과 풍요로운 삶을 영유할 수 있는 음악교육이 될 수 있도록 최선을 다하며 대한민국의 미래를 이끌어갈 우리의 자녀들을 교육하고 있습니다.
+                            소리엘 음악학원은 클래식, 재즈, CCM 장르 음악을 전문적으로 지도하고 있으며 피아노 뿐 아니라 다양한 악기 프로그램(리코더, 오카리나, 우쿠렐레, 플루트) 또한 체계적으로 준비되어 있습니다.  </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" style="font-family: 'Noto Serif KR', serif; margin-top: 100px; margin-bottom: 45px;">
+                <p class="h4">교육과목</p>
+            </div>
+
+            <div id="mal">
+                <div class="con">
+                    <div class="abtimg">
+                        <img th:src="@{/static/images/piano_inst.jpg}">
+                        <div class="bottom-left" id="piano">피아노</div>
+                    </div>
+                </div>
+                <div class="con">
+                    <div class="abtimg">
+                        <img th:src="@{/static/images/harmonica_inst.jpg}">
+                        <div class="bottom-right" id="harmonica">하모니카</div>
+                    </div>
+                </div>
+
+                <div class="con">
+                    <div class="abtimg">
+                        <img th:src="@{/static/images/flute_inst.jpg}">
+                        <div class="bottom-left" id="flute">플루트</div>
+                    </div>
+                </div>
+
+                <div class="con">
+                    <div class="abtimg">
+                        <img th:src="@{/static/images/ocarina_inst.jpg}">
+                        <div class="bottom-right" id="ocarina">오카리나</div>
+                    </div>
+                </div>
+
+                <div class="con">
+                    <div class="abtimg">
+                        <img th:src="@{/static/images/recorder_inst.jpg}">
+                        <div class="bottom-left" id="recorder">리코더</div>
+                    </div>
+                </div>
+
+                <div class="con">
+                    <div class="abtimg">
+                        <img th:src="@{/static/images/ukulele_inst.jpg}">
+                        <div class="bottom-right" id="ukulele">우클렐레</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-bottom:100px"></div>
+        <!--end of container-->
+
+    </div>
+</body>
+</html>
