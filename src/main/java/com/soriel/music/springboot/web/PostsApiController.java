@@ -33,7 +33,8 @@ public class PostsApiController {
         authentication = SecurityContextHolder.getContext().getAuthentication();
 
         Long writerId = memberService.getMemberInfo(authentication.getName());
-        if(postsDto.getTitle()==null || postsDto.getContent()==null || postsDto.getId()==null || postsDto.getWriter_id()==null || !postsDto.getCategory().equals("입학상담") || !postsDto.getCategory().equals("교재구입/대여") || !postsDto.getCategory().equals("차량운행") || !postsDto.getCategory().equals("기타")) {
+
+        if(postsDto.getTitle()==null || postsDto.getContent()==null || writerId==null) {
             return "redirect:/error";
         } else {
             postsDto.setWriter_id(writerId);

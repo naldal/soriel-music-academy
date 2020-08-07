@@ -32,6 +32,9 @@ div#map div div div div {
 }
 
 #contactBtn {
+    border: 1px solid #e17055;
+    background-color: white;
+    color: #e17055;
     width: 100%;
 }
 

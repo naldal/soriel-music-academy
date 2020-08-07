@@ -1,3 +1,26 @@
+@font-face { font-family: 'InfinitySans-BoldA1'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-BoldA1.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'NEXON Lv1 Gothic OTF'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+.mx-md-5, h2, h4{
+    font-family: 'InfinitySans-BoldA1'
+}
+
+.mx-md-5 {
+    text-shadow:
+        -0.3px -0.3px 0 #000,
+        0.3px -0.3px 0 #000,
+        -0.3px 0.3px 0 #000,
+        0.3px 0.3px 0 #000;
+}
+
+#subtitle {
+    font-size: 27px;
+}
+
+#title {
+    margin-bottom: -34px !important;
+}
+
 .card.card-image {
     margin-top: 20px;
     background-image: url("../images/22.jpg");
@@ -7,4 +30,13 @@
 
 #carouselExampleIndicators {
     margin-top: 100px;
+}
+
+.cards {
+    text-align: justify;
+    font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+.carousel-item.active {
+    max-width: 100%;
 }

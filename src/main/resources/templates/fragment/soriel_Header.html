@@ -6,34 +6,34 @@
 </head>
 <body>
     <div th:fragment="headerFragment">
-        <header class="blog-header py-2">
+        <header id="navbar1" class="blog-header py-2">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-4 pt-1">
-                    <a href="#" class="text-muted">Notice</a>
+                    <a href="#" class="text-muted">공지</a>
                 </div>
-                <div class="col-4 text-center">
-                    <a href="/" class="blog-header-logo text-dark">Soriel Music Acamedy</a>
+                <div id="realTitle" class="col-4 text-center">
+                    <a href="/" class="blog-header-logo text-dark">소리엘 음악학원</a>
                 </div>
-                <div class="col-4 d-flex justify-content-end align-items-center">
-                    <a sec:authorize="isAnonymous()" href="/soriel_Login_page.html" th:href="@{/user/login_page}" class="btn btn-sm btn-outline-secondary">Sign up</a>
+                <div id="identifying" class="col-4 d-flex justify-content-end align-items-center">
+                    <a sec:authorize="isAnonymous()" href="/soriel_Login_page.html" th:href="@{/user/login_page}" class="btn btn-sm btn-outline-secondary">로그인</a>
                     <div>
                         <div sec:authorize="isAuthenticated()" style="color:#6c757d; display:inline-block">
-                            <span sec:authentication="principal.customName"></span>님 환영합니다.&nbsp;
+                            <span id="welcome" sec:authentication="principal.customName"></span>님 환영합니다.&nbsp;
                         </div>
-                        <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}" class="btn btn-sm btn-outline-secondary">Log out</a>
+                        <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}" class="btn btn-sm btn-outline-secondary">로그아웃</a>
                     </div>
                 </div>
             </div>
         </header>
         <div class="nav-scroller py-1 mb-2">
-            <nav class="nav d-flex justify-content-between">
-                <a th:href="@{/about}" class="p-2 text-muted">About us</a>
-                <a th:href="@{/contact}" class="p-2 text-muted">Contact</a>
-                <a th:href="@{/picture_board}" class="p-2 text-muted">Pictures</a>
-                <a th:href="@{/video_board/1}" class="p-2 text-muted">Videos</a>
-                <a th:href="@{/inquire_board}" class="p-2 text-muted">Inquire</a>
+            <nav id="navbar2" class="nav d-flex justify-content-between">
+                <a th:href="@{/about}" class="p-2 text-muted">학원소개</a>
+                <a th:href="@{/contact}" class="p-2 text-muted">찾아오는 길</a>
+                <a th:href="@{/picture_board}" class="p-2 text-muted">사진모음</a>
+                <a th:href="@{/video_board/1}" class="p-2 text-muted">연주영상</a>
+                <a th:href="@{/inquire_board}" class="p-2 text-muted">게시판</a>
                 <!--<a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/user/myinfo}" class="p-2 text-muted">My page</a>-->
-                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}" class="p-2 text-muted">Admin</a>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}" class="p-2 text-muted">관리자</a>
             </nav>
         </div>
     </div>

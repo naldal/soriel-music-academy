@@ -1,5 +1,29 @@
+@font-face { font-family: 'BMHANNAAir'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'Binggrae-Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'BBTreeGB'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+#realTitle {
+    font-family:'Binggrae-Bold'
+}
+
+#navbar1{
+    font-family: 'BMHANNAAir';
+}
+
+#navbar2{
+    font-family: 'Binggrae-Bold';
+}
+
+a.text-muted {
+    font-size: 18px;
+}
+
+.p-2 text-muted {
+    font-size: 19.5px;
+    color: black !important;
+}
+
 .col-4.text-center {
-    font-family: "Roboto Slab", serif;
     font-size: 30px;
 }
 .nav-scroller.py-1.mb-2 {
@@ -31,4 +55,12 @@
 
 .p-2:hover:after {
     width: 100%;
+}
+
+span#welcome {
+    font-size: 1.2rem !important;
+}
+
+a.btn.btn-sm.btn-outline-secondary,#identifying div div,div.col-4.pt-1 {
+    font-weight: bold;
 }
