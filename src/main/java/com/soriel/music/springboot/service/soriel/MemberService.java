@@ -30,9 +30,6 @@ public class MemberService implements UserDetailsService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         integrationDto.setUpwd(passwordEncoder.encode(integrationDto.getUpwd()));
 
-        //todo: 실 서비스 때 삭제할 것.
-        if (integrationDto.getName().equals("admin")) return integrationRepository.save(integrationDto.toAdminEntity());
-
         return integrationRepository.save(integrationDto.toEntity());
     }
 
