@@ -17,14 +17,14 @@
 
 
 #### admin
-- 원생 등록, 수정, 삭제기능
+- 원생 등록, 수정, 삭제
 - 원생 연주영상 추가, 영상 삭제
-- 게시글 삭제, 답변 등록, 답변 삭제
+- 게시글 삭제, 답변 등록, 답변 수정, 답변 삭제
 - 학원 사진 등록
 
 ######
 ## 개발도구
-- IDE: intellij Community
+- IDE: Intellij Community
 - Compiler: Java 8
 - Build Tool: Gradle 6.1.1
 - Framework: Spring Boot 2.1.7
