@@ -28,7 +28,6 @@
         <input type="hidden" id="id" name="id" th:value="${postDto.id}">
         <input type="hidden" id="writer_id" name="writer_id" th:value="${postDto.writer_id}">
 
-
         <div class="form-group">
             <label>문의 제목</label>
             <input type="text"id="title"  name="title" class="form-control" th:value="${postDto.title}"/>
@@ -49,7 +48,7 @@
         </div>
 
         <div class="text-right" style="margin-bottom: 100px;">
-            <input id="updateBtn" class="btn btn-outline-secondary" type="submit" value="수정">
+            <input id="updateBtn" class="btn btn-outline-secondary" type="button" value="수정">
         </div>
     </form>
 </div>
