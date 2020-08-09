@@ -5,7 +5,6 @@ import com.soriel.music.springboot.domain.student.StudentsRepository;
 import java.util.List;
 import java.util.Optional;
 
-import com.soriel.music.springboot.web.dto.student.StudentDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

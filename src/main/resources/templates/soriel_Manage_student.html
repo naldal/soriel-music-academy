@@ -1,10 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Managing Student</title>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+    <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" th:href="@{/static/css/soriel_Header.css}" />
+    <link rel="stylesheet" href="../static/css/soriel_manageStudent.css" />
+    <script th:src="@{/static/js/soriel_manageStudent.js}"></script>
 </head>
 <body>
-학생관리 페이지입니다.
+    <div class="container">
+        <th:block th:replace="fragment/soriel_Header :: headerFragment"></th:block>
+
+
+        <div id="inq" class="text-center">
+            <p class="h4">학생관리</p>
+            <p class="h2">ㅡ</p>
+        </div>
+        <!-- Inquire Text 1 -->
+
+        <ul class="nav nav-pills justify-content-end">
+            <li class="nav-item">
+                <a id="enroll" class="nav-link active" href="../admin/manageStudent/enroll">원생 등록</a>
+            </li>
+        </ul>
+        <table class="table">
+            <thead>
+            <tr style="text-align: center">
+                <th scope="col">#</th>
+                <th scope="col">학생 이름</th>
+                <th scope="col">유튜브 링크</th>
+                <th scope="col">등록 날짜</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr style="text-align: center;" th:each="students : ${students}">
+                <th scope="row">
+                    <span class="showing_id" th:text="${students.id}"></span>
+                    <input class="stud_id" type="text" th:placeholder="${students.id}">
+                </th>
+                <td>
+                    <span class="showing_name" th:text="${students.student_name}"></span>
+                    <input class="stud_name" type="text" th:placeholder="${students.student_name}">
+                </td>
+                <td>
+                    <span class="showing_link" th:text="${students.youtube_link}"></span>
+                    <input class="stud_link" type="text" th:placeholder="${students.youtube_link}">
+                    <!---->
+                </td>
+                <td>
+                    <span th:text="${#temporals.format(students.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+                </td>
+                <div>
+                    <td>
+                        <label></label>
+                        <input th:id="${students.id}" class="btn btn-outline-secondary point_update" type="button" value="수정">
+                        <input th:id="${students.id}" class="btn btn-outline-secondary hidden_update" type="button" value="수정하기">
+                    </td>
+                    <td>
+                        <input th:id="${students.id}" class="btn btn-outline-secondary point_delete" type="button" value="삭제">
+                    </td>
+                </div>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+    <th:block th:replace="fragment/soriel_Footer :: footerFragment"></th:block>
 </body>
 </html>

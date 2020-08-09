@@ -28,8 +28,12 @@ public class MemberController {
 
     //회원가입 페이지
     @GetMapping("/user/sign_up_page")
-    public String sign_up_page() {
+    public String sign_up_page()
+    {
+
+
         return "soriel_Sign_up";
+
     }
 
     //회원가입 처리

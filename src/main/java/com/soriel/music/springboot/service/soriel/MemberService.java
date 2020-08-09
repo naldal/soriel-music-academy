@@ -26,6 +26,7 @@ public class MemberService implements UserDetailsService {
     private IntegrationRepository integrationRepository;
 
     public IntegrationEntity joinUser(IntegrationDto integrationDto) {
+
         // 비밀번호 암호화
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         integrationDto.setUpwd(passwordEncoder.encode(integrationDto.getUpwd()));
