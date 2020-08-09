@@ -1,22 +1,20 @@
  $(document).ready(function(){
     $("#updateBtn").click(function (){
         var data = {
+            id: $("#id").val(),
             title : $("#title").val(),
             content : $("#content").val(),
             writer_id : $("#writer_id").val()
         };
-        var id = $("#id").val();
-        alert(data.content);
 
         $.ajax({
             type: 'PUT',
-            url: '/post/update/'+id,
-            dataType: 'json',
+            url: '/post/update/'+data.id,
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
-        }).done(function(data){
+        }).done(function(){
             alert('수정 완료');
-            window.location.href="/inquire_view/"+id;
+            window.location.href="/inquire_view/"+data.id;
         }).fail(function(error){
             alert(JSON.stringify(error));
         });

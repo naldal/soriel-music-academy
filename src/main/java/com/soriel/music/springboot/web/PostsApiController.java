@@ -95,12 +95,13 @@ public class PostsApiController {
     //게시글 수정 기능
     @PutMapping("/post/update/{id}")
     @ResponseBody
-    public Boolean update(@PathVariable("id") Long id, @RequestBody PostsUpdateRequestDto requestDto) {
+    public void update(@PathVariable("id") Long id, @RequestBody PostsUpdateRequestDto requestDto) {
         //현재 로그인 한 id
         Long current_id = memberService.getMemberInfo(authentication.getName());
-        if(!requestDto.getWriter_id().equals(current_id)) return false;
+        if(!requestDto.getWriter_id().equals(current_id)) return;
+
+        //글번호, json
         postsService.update(id, requestDto);
-        return true;
     }
 
     //게시글 삭제처리
