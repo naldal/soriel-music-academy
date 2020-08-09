@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
     $(".hidden_update").hide();
+    $(".cancel").hide();
 
     $(".stud_id").hide();
     $(".stud_name").hide();
@@ -15,6 +16,7 @@ $(document).ready(function(){
         $input_link = $(this).parents('tr').children('th').siblings('td').children('.stud_link');
         $hidden_update = $(this).next();
         $point_delete = $(this).parent().siblings().children('.point_delete');
+        $cancel = $(this).parent().siblings().children('.cancel');
 
         if( $(this).attr('id') == $(this).parents('tr').children('th').attr('id')){
             $showing_name.hide();
@@ -24,7 +26,22 @@ $(document).ready(function(){
             $(this).hide();
             $hidden_update.show();
             $point_delete.hide();
+            $cancel.show();
         }
+
+        $cancel.click(function(){
+            $point_update = $(this).parent().siblings().children('.point_update');
+            $hidden_update = $(this).parent().siblings().children('.hidden_update');
+
+            $(this).hide();
+            $input_link.hide();
+            $input_name.hide();
+            $hidden_update.hide();
+            $showing_name.show();
+            $showing_link.show();
+            $point_update.show();
+            $point_delete.show();
+        });
 
         $(".hidden_update").click(function(){
             $point_update = $(this).prev();
