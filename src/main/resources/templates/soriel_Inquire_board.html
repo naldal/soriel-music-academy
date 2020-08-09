@@ -38,7 +38,7 @@
             </ul>
             <table class="table">
                 <thead>
-                <tr>
+                <tr style="text-align: center;">
                     <th scope="col">#</th>
                     <th id="title" scope="col">제목</th>
                     <th scope="col">작성자</th>
@@ -48,7 +48,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="board : ${postList.content}">
+                <tr style="text-align: center;" th:each="board : ${postList.content}">
                     <th scope="row">
                         <span th:text="${board.id}"></span>
                     </th>
