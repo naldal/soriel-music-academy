@@ -33,9 +33,7 @@
             </div>
 
             <div class="content shadow-sm p-3 mb-5 bg-white rounded" style="font-size: 24px; margin-top: 30px; margin-bottom: 20px !important;">
-                <p id="content" class="text-break" th:utext="${#strings.replace( #strings.escapeXml( postDto.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}" th:inline="text">
-                    <!--[[${postDto.content}]]-->
-                </p>
+                <p id="content" class="text-break" th:utext="${#strings.replace( #strings.escapeXml( postDto.content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}" th:inline="text"></p>
             </div>
 
             <div class="text-right">
@@ -45,7 +43,7 @@
             </div>
 
 
-            <div th:if="${replyDto != null}" style="display:margin-top:3px">
+            <div th:if="${replyDto != null}" style="margin-top: 3px">
                 <input type="hidden" id="reply_id" th:value="${replyDto.id}">
                 <label style="font-size: 24px; border-bottom: 1px solid #dddddd; margin-top: 60px;">답글</label>
                 <span>
@@ -55,7 +53,9 @@
                 </span>
 
                 <div id="reply_content_div" class="content shadow-sm p-3 mb-5 bg-white rounded" style="font-size: 24px; margin-top: 30px; margin-bottom: 20px !important;" th:if="${replyDto != null}">
-                    <p id="reply_content" class="text-break" th:utext="${#strings.replace( #strings.escapeXml( replyDto.reply_content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}"  th:inline="text" >
+                    <p id="reply_content" class="text-break"
+                       th:utext="${#strings.replace( #strings.escapeXml( replyDto.reply_content ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}"
+                       th:inline="text">
 
                     </p>
                 </div>

@@ -73,27 +73,7 @@
 
                 </tbody>
             </table>
-           <!-- <nav id="pag" aria-label="Page navigation example"
-                    th:with="start=${(board.number/maxPage)*maxPage+1},
-                             end=(${(board.totalPages == 0) ? 1 : (start+ (maxPage -1) < board.totalPages ? start + (maxPage-1) : board.totalPages)})">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item" th:if="${start > 1}">
-                        <a class="page-link" th:href="@{/inquire_board?(page=0)}" th:text="처음"></a>
-                    </li>
-                    <li class="page-item" th:if="${start > 1}">
-                        <a class="page-link" th:href="@{/inquire_board?(page=${start-maxPage})}" th:text="이전"></a>
-                    </li>
-                    <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}">
-                        <a class="page-link" th:href="@{/inquire_board?(page=${page-1})}" th:text="${page}"></a>
-                    </li>
-                    <li class="page-item" th:if="${end < pages.totalPages}">
-                        <a class="page-link" th:href="@{/inquire_board?(page=${start+maxPage})}" th:text="다음"></a>
-                    </li>
-                    <li class="page-item" th:if="${end < pages.totalPages}">
-                        <a class="page-link" th:href="@{/inquire_board?(page=${pages.totalPages-1})}" th:text="마지막"></a>
-                    </li>
-                </ul>
-            </nav>-->
+
             <nav id="pag" style="text-align: center;">
                 <ul class="pagination justify-content-center"
                     th:with="start=${T(Math).floor(postList.number/10)*10 + 1},

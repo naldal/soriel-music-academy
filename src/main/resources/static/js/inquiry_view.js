@@ -5,11 +5,13 @@ $(document).ready(function () {
     $("#do_reply_updateBtn").hide();
     $("#reply").hide();
     $(".spc").hide();
+
     $("#replyBtn").click(function () {
         $("#deleteBtn").hide();
         $("#replyBtn").hide();
         $("#reply").show();
         $(".spc").show();
+
     });
 
     $("#deleteBtn").click(function(){
@@ -71,6 +73,9 @@ $(document).ready(function () {
         $("#do_reply_updateBtn").show();
         $("#reply_deleteBtn").hide();
         $("#reply_updateBtn").hide();
+
+        const toreply = $("#reply_content").text();
+        $("#reply_content_update").val(toreply);
     });
 
     $("#do_reply_updateBtn").click(function() {

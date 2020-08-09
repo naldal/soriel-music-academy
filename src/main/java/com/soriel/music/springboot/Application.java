@@ -24,7 +24,7 @@ public class Application {
     }
 
     /* only run on local environment*/
-   /* @Bean
+    /*@Bean
     public CommandLineRunner initStudents(StudentsRepository studentsRepository, IntegrationRepository integrationRepository) {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
