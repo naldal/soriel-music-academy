@@ -22,7 +22,22 @@ public class Students extends BaseTimeEntity {
     @Column(length = 255)
     private String youtube_link;
 
-    public void update_student_info(String youtube_link) {
+    public void update_student_info(String student_name, String youtube_link) {
+        if(student_name==null) {
+            update_student_link(youtube_link);
+        } else if(youtube_link==null) {
+            update_student_name(student_name);
+        } else {
+            this.student_name = student_name;
+            this.youtube_link = youtube_link;
+        }
+    }
+
+    public void update_student_name(String student_name){
+        this.student_name = student_name;
+    }
+
+    public void update_student_link(String youtube_link){
         this.youtube_link = youtube_link;
     }
 

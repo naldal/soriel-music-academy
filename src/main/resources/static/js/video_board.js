@@ -6,7 +6,7 @@ $(document).ready(function() {
             type: 'POST',
             url: '/video_board/'+id,
             dataType: 'text',
-            contentType: 'application/json, charset=utf-8',
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(id)
         }).done(function(ajaxReturnString) {
             window.location.href = '/video_board/'+id+'?link='+ajaxReturnString

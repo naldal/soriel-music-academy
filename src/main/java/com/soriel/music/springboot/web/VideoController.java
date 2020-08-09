@@ -20,7 +20,7 @@ public class VideoController {
     //비디오 게시판 진입
     @GetMapping("/video_board/{id}")
     public String video_board(@PathVariable("id") Long id, Model model, @RequestParam(required = false) String link) {
-        List<Students> studentsList = studentsService.findAllStudents();
+        List<Students> studentsList = studentsService.findAllByName();
 
         model.addAttribute("link", link);
         model.addAttribute("students", studentsList);

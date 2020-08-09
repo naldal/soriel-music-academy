@@ -8,5 +8,8 @@ import java.util.Optional;
 
 public interface StudentsRepository extends JpaRepository<Students, Long> {
     @Query(value = "select * from students order by student_name asc", nativeQuery = true)
-    List<Students> findAll();
+    List<Students> findAllByName();
+
+    @Query(value = "select * from students order by id asc", nativeQuery = true)
+    List<Students> findAllById();
 }

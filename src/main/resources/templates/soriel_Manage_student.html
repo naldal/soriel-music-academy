@@ -9,9 +9,10 @@
             integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
             crossorigin="anonymous"
     />
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
-    <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script th:src="@{/static/js/popper.js}"></script>
     <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet" />
@@ -33,10 +34,37 @@
         <!-- Inquire Text 1 -->
 
         <ul class="nav nav-pills justify-content-end">
+            <li>
+                <div class="dropdown" style="margin-right: 5px">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        정렬
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/admin/manage?sort=name">이름순</a>
+                        <a class="dropdown-item" href="/admin/manage?sort=number">번호순</a>
+                    </div>
+                </div>
+            </li>
             <li class="nav-item">
-                <a id="enroll" class="nav-link active" href="../admin/manageStudent/enroll">원생 등록</a>
+                <a id="enroll" class="btn btn-secondary active">원생 등록</a>
             </li>
         </ul>
+        <table class="table newStudent">
+            <tbody>
+            <tr>
+                <th>
+                    <input class="form-control newName" type="text" placeholder="새로운 학생 이름">
+                </th>
+                <th>
+                    <input class="form-control newLink" type="text" placeholder="새로운 학생 링크">
+                </th>
+                <th>
+                    <input type="button" class="btn btn-secondary enrollBtn" value="등록하기">
+                </th>
+            </tr>
+            </tbody>
+        </table>
+        </table>
         <table class="table">
             <thead>
             <tr style="text-align: center">
@@ -50,17 +78,17 @@
             </thead>
             <tbody>
             <tr style="text-align: center;" th:each="students : ${students}">
-                <th scope="row">
+                <th scope="row" th:id="${students.id}">
                     <span class="showing_id" th:text="${students.id}"></span>
                     <input class="stud_id" type="text" th:placeholder="${students.id}">
                 </th>
                 <td>
                     <span class="showing_name" th:text="${students.student_name}"></span>
-                    <input class="stud_name" type="text" th:placeholder="${students.student_name}">
+                    <input class="form-control stud_name" type="text" th:placeholder="${students.student_name}">
                 </td>
                 <td>
                     <span class="showing_link" th:text="${students.youtube_link}"></span>
-                    <input class="stud_link" type="text" th:placeholder="${students.youtube_link}">
+                    <input class="form-control stud_link" type="text" th:placeholder="${students.youtube_link}">
                     <!---->
                 </td>
                 <td>

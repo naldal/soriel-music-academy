@@ -23,7 +23,8 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
+    /* only run on local environment*/
+    /*@Bean
     public CommandLineRunner initStudents(StudentsRepository studentsRepository, IntegrationRepository integrationRepository) {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -48,5 +49,5 @@ public class Application {
             });
 
         };
-    }
+    }*/
 }
