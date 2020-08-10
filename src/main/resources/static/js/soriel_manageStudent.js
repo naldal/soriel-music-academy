@@ -69,6 +69,8 @@ $(document).ready(function(){
                 $(".hidden_update").hide();
                 $point_update.show();
                 $point_delete.show();
+                $cancel.hide();
+
 
                 /*window.location.href = window.location.href;*/
             }).fail(function(error){
