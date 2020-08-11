@@ -24,7 +24,7 @@ public class Application {
     }
 
     /* only run on local environment*/
-    @Bean
+   /* @Bean
     public CommandLineRunner initStudents(StudentsRepository studentsRepository, IntegrationRepository integrationRepository) {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -39,15 +39,15 @@ public class Application {
 
             integrationRepository.save(integrationEntity);
 
-            /*IntStream.rangeClosed(1, 50).forEach(i -> {
+            IntStream.rangeClosed(1, 50).forEach(i -> {
                 Students students = Students.builder()
                         .student_name("student" + i)
                         .youtube_link("youtube_link" + 1)
                         .build();
 
                 studentsRepository.save(students);
-            });*/
+            });
 
         };
-    }
+    }*/
 }
