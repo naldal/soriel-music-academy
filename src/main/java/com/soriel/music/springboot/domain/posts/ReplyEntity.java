@@ -23,11 +23,12 @@ public class ReplyEntity extends BaseTimeEntity {
     @Column(length = 255, nullable = false)
     private String reply_content;
 
-    @Column(nullable = false)
-    private Long post_id;
+    @ManyToOne
+    @JoinColumn(name = "post_id", nullable = false)
+    private PostsEntity post_id;
 
     @Builder
-    public ReplyEntity(Long id, String reply_content, String reply_writer, Long post_id) {
+    public ReplyEntity(Long id, String reply_content, String reply_writer, PostsEntity post_id) {
         this.id = id;
         this.reply_content = reply_content;
         this.reply_writer = reply_writer;

@@ -72,9 +72,11 @@ public class PostsService {
         postsRepository.delete(postsEntity);
     }
 
+    /* reply service */
     public Long save_reply(Long post_id, ReplyDto replyDto) {
         PostsEntity postsEntity = postsRepository.findById(post_id).orElseThrow(NullPointerException::new);
         postsEntity.doneReply();
+        replyDto.setPost_id(postsEntity);
 
         return replyRepository.save(replyDto.toEntity()).getId();
     }
@@ -95,8 +97,9 @@ public class PostsService {
     @Transactional
     public void deleteReply(Long reply_id) {
         ReplyEntity replyEntity = replyRepository.findById(reply_id).orElseThrow(NullPointerException::new);
-        Long post_id = replyEntity.getPost_id();
-        PostsEntity postsEntity = postsRepository.findById(post_id).orElseThrow(NullPointerException::new);
+        PostsEntity post_id = replyEntity.getPost_id();
+
+        PostsEntity postsEntity = postsRepository.findById(post_id.getId()).orElseThrow(NullPointerException::new);
         postsEntity.undoReply();
 
         replyRepository.deleteById(reply_id);

@@ -127,6 +127,8 @@ public class PostsApiController {
     @PostMapping("/post/reply/{post_id}")
     @ResponseBody
     public Boolean reply_function(@PathVariable("post_id") Long post_id, @RequestBody ReplyDto replyDto) {
+        System.out.println(":::"+post_id);
+        System.out.println("::::"+replyDto.toString());
         replyDto.setReply_writer("administrator");
         return postsService.save_reply(post_id, replyDto)>=0L;
     }

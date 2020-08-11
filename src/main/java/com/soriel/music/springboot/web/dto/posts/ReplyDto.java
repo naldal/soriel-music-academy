@@ -15,13 +15,13 @@ public class ReplyDto {
     private Long id;
     private String reply_writer;
     private String reply_content;
-    private Long post_id;
+    private PostsEntity post_id;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 
     @Builder
     public ReplyDto(Long id, String reply_content,
-                    String reply_writer, Long post_id,
+                    String reply_writer, PostsEntity post_id,
                     LocalDateTime createdDate, LocalDateTime modifiedDate) {
         this.id = id;
         this.reply_content = reply_content;
@@ -33,7 +33,6 @@ public class ReplyDto {
 
     public ReplyEntity toEntity() {
         return ReplyEntity.builder()
-                .id(id)
                 .reply_content(reply_content)
                 .reply_writer(reply_writer)
                 .post_id(post_id)
