@@ -1,7 +1,6 @@
-package com.soriel.music.springboot.domain.soriel;
+package com.soriel.music.springboot.domain.member;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 

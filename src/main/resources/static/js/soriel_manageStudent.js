@@ -81,7 +81,6 @@ $(document).ready(function(){
 
     $(".point_delete").click(function (){
         const del_id = $(this).attr('id');
-        alert(del_id);
 
         $.ajax({
             type: 'DELETE',

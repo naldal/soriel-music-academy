@@ -1,6 +1,6 @@
 package com.soriel.music.springboot.web.dto.member;
 
-import com.soriel.music.springboot.domain.soriel.IntegrationEntity;
+import com.soriel.music.springboot.domain.member.IntegrationEntity;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;

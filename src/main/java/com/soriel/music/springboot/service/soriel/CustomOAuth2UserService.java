@@ -1,6 +1,6 @@
 package com.soriel.music.springboot.service.soriel;
 
-import com.soriel.music.springboot.domain.soriel.*;
+import com.soriel.music.springboot.domain.member.*;
 import com.soriel.music.springboot.web.dto.member.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,7 +11,6 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
 import java.util.Collections;
 
 @RequiredArgsConstructor

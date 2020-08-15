@@ -1,4 +1,4 @@
-package com.soriel.music.springboot.domain.soriel;
+package com.soriel.music.springboot.domain.member;
 
 import com.soriel.music.springboot.domain.BaseTimeEntity;
 import com.soriel.music.springboot.domain.Role;
@@ -8,10 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 @Getter
 @Entity(name = "member")
@@ -54,9 +50,5 @@ public class IntegrationEntity extends BaseTimeEntity {
         this.email = email;
 
         return this;
-    }
-
-    public static IntegrationEntity createIntegration(){
-        return new IntegrationEntity();
     }
 }

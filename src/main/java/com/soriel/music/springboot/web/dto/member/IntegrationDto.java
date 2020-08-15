@@ -1,7 +1,7 @@
 package com.soriel.music.springboot.web.dto.member;
 
 import com.soriel.music.springboot.domain.Role;
-import com.soriel.music.springboot.domain.soriel.IntegrationEntity;
+import com.soriel.music.springboot.domain.member.IntegrationEntity;
 import lombok.*;
 
 import java.time.LocalDateTime;

@@ -1,20 +1,8 @@
 package com.soriel.music.springboot;
 
-import com.soriel.music.springboot.domain.Role;
-import com.soriel.music.springboot.domain.soriel.IntegrationEntity;
-import com.soriel.music.springboot.domain.soriel.IntegrationRepository;
-import com.soriel.music.springboot.domain.student.Students;
-import com.soriel.music.springboot.domain.student.StudentsRepository;
-import lombok.Builder;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import java.util.stream.IntStream;
 
 @EnableJpaAuditing
 @SpringBootApplication
@@ -24,8 +12,8 @@ public class Application {
     }
 
     /* only run on local environment*/
-   /* @Bean
-    public CommandLineRunner initStudents(StudentsRepository studentsRepository, IntegrationRepository integrationRepository) {
+    /*@Bean
+    public CommandLineRunner initStudents(StudentsRepository studentsRepository, PostsRepository postsRepository, IntegrationRepository integrationRepository) {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -38,7 +26,6 @@ public class Application {
                     .build();
 
             integrationRepository.save(integrationEntity);
-
             IntStream.rangeClosed(1, 50).forEach(i -> {
                 Students students = Students.builder()
                         .student_name("student" + i)
@@ -46,8 +33,23 @@ public class Application {
                         .build();
 
                 studentsRepository.save(students);
+
             });
 
+            IntStream.rangeClosed(1, 100).forEach(i -> {
+
+                Long tempId = new Long(i);
+                PostsEntity postsEntity = PostsEntity.builder()
+                        .id(tempId)
+                        .title("title"+i)
+                        .category("")
+                        .content("content")
+                        .writer("test user")
+                        .build();
+
+                postsRepository.save(postsEntity);
+
+            });
         };
     }*/
 }

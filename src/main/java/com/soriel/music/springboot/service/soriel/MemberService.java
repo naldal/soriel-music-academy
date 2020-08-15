@@ -1,8 +1,7 @@
 package com.soriel.music.springboot.service.soriel;
 
-import com.soriel.music.springboot.domain.Role;
-import com.soriel.music.springboot.domain.soriel.IntegrationEntity;
-import com.soriel.music.springboot.domain.soriel.IntegrationRepository;
+import com.soriel.music.springboot.domain.member.IntegrationEntity;
+import com.soriel.music.springboot.domain.member.IntegrationRepository;
 import com.soriel.music.springboot.web.dto.member.CustomIntegrationDto;
 import com.soriel.music.springboot.web.dto.member.IntegrationDto;
 import lombok.AllArgsConstructor;
@@ -13,10 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.Errors;
-import org.springframework.validation.FieldError;
 
-import javax.transaction.Transactional;
 import java.util.*;
 
 @Service
@@ -26,7 +22,6 @@ public class MemberService implements UserDetailsService {
     private IntegrationRepository integrationRepository;
 
     public IntegrationEntity joinUser(IntegrationDto integrationDto) {
-
         // 비밀번호 암호화
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         integrationDto.setUpwd(passwordEncoder.encode(integrationDto.getUpwd()));
@@ -37,7 +32,6 @@ public class MemberService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<IntegrationEntity> integrationEntityOptional = integrationRepository.findByName(username);
-        //IntegrationEntity integrationEntity = integrationEntityOptional.get();
         IntegrationEntity integrationEntity = integrationEntityOptional.orElse(null);
 
         List<GrantedAuthority> authorities = new ArrayList<>();
