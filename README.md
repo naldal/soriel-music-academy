@@ -39,8 +39,9 @@
 ## Developer
 backend, frontend, deploy: 송하민
 
-contact me: cec7378@gmail.com
+contact me: cec7378@gmail.com  
 
+special thanks to [조재현](https://github.com/pursue503)
 ######
 
 
