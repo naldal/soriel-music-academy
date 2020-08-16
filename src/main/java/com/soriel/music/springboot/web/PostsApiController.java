@@ -49,15 +49,7 @@ public class PostsApiController {
     @GetMapping("/inquire_board")
     public String postList(Model model, @PageableDefault Pageable pageable) {
         Page<PostsEntity> postList = postsService.getPostList(pageable);
-       /* System.out.println("---postList---");
-        System.out.println("number : "+postList.getNumber());
-        System.out.println("totalpage : "+postList.getTotalPages());
-        System.out.println("size : "+postList.getSize());
-        System.out.println("sort : "+postList.getSort());
-        System.out.println("first : "+postList.isFirst());
-        System.out.println("last : "+postList.isLast());
-        System.out.println("content : "+postList.getContent());
-        model.addAttribute("postList", postList);*/
+        model.addAttribute("postList", postList);
         return "soriel_Inquire_board";
     }
 
