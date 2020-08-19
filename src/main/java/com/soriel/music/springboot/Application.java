@@ -1,8 +1,20 @@
 package com.soriel.music.springboot;
 
+import com.soriel.music.springboot.domain.Role;
+import com.soriel.music.springboot.domain.member.IntegrationEntity;
+import com.soriel.music.springboot.domain.member.IntegrationRepository;
+import com.soriel.music.springboot.domain.posts.PostsEntity;
+import com.soriel.music.springboot.domain.posts.PostsRepository;
+import com.soriel.music.springboot.domain.student.Students;
+import com.soriel.music.springboot.domain.student.StudentsRepository;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.stream.IntStream;
 
 @EnableJpaAuditing
 @SpringBootApplication
@@ -12,7 +24,7 @@ public class Application {
     }
 
     /* only run on local environment*/
-    /*@Bean
+    @Bean
     public CommandLineRunner initStudents(StudentsRepository studentsRepository, PostsRepository postsRepository, IntegrationRepository integrationRepository) {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -51,5 +63,5 @@ public class Application {
 
             });
         };
-    }*/
+    }
 }

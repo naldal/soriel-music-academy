@@ -23,9 +23,9 @@ public class Students extends BaseTimeEntity {
     private String youtube_link;
 
     public void update_student_info(String student_name, String youtube_link) {
-        if(student_name==null) {
+        if(student_name.equals("")) {
             update_student_link(youtube_link);
-        } else if(youtube_link==null) {
+        } else if(youtube_link.equals("")) {
             update_student_name(student_name);
         } else {
             this.student_name = student_name;
