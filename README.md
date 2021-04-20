@@ -1,4 +1,3 @@
-# [소리엘 음악학원 홈페이지 👉](https://www.sorielacademy.com/)
 **소리엘 음악학원 웹 사이트 제작 프로젝트입니다.**  
 ##### [제작 과정 정리 블로그](https://codecrafting.tistory.com/)
 
